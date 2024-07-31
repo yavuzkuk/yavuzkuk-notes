@@ -5,7 +5,7 @@ Merhabalar ben Yavuz Kuk. Karabük Üniversitesi Bilgisayar Mühendisliği son s
 
 ### Sosyal Medya
 
-Linkedin: https://www.linkedin.com/in/yavuzkuk <br>
-Github:  https://github.com/yavuzkuk?tab=repositories <br>
+Linkedin:    https://www.linkedin.com/in/yavuzkuk <br>
+Github:      https://github.com/yavuzkuk?tab=repositories <br>
 Try Hack Me: https://tryhackme.com/p/Backf6
 
