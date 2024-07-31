@@ -1,35 +1,27 @@
-# gokuk scan
+---
+cover: >-
+  .gitbook/assets/apple-pro-display-xdr-3840x2160-abstract-4k-wwdc-2019-21619.jpg
+coverY: 0
+layout:
+  cover:
+    visible: true
+    size: full
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 
-Bu araç [Golang](https://go.dev/) ile oluşturulmuştur. Bu araçla, parametre olarak verdiğiniz web sitesini tarayabilirsiniz.
+# Ben kimim?
 
-------
+Merhabalar ben Yavuz Kuk. Karabük Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisiyim. Siber Güvenlik ve  Flutter ile mobil uygulama geliştirme alanlarında kendi çapımda çalışmalar yapıyorum. Ayrıca T3 Deneyap Atölyelerinde Siber Güvenlik ve Mobil Uygulama geliştirme eğitmenliği yapmaktayım.
 
-This tool created with [Golang](https://go.dev/). With this tool, you can scan the website you provide as parameters.
+### Sosyal Medya
 
-
-- DNS Record
-    - MX Record
-    - NS Record
-    - A Record (IPv4)
-    - AAAA Record (IPv6)
-    - TXT Record
-- Check robots.txt file
-- Subdomain Scan
-- Directory Scan
-- Web Server Infos
-
- ### Parameters
-
-```
--d, --DNS Record Type string           A Record: IPv4 address
-                                         AAAA Record:Ipv6 address
-                                         MX Record:Mail record
-                                         NS Record:Name server record (default "A-AAAA-MX-NX")
-  -f, --Filter HTTP Status Code string   You can filter HTTP Statsus Code with -f parameter (default "200,404")
-  -c, --count int                        Request count (default 10)
-  -h, --help                             help for Cyrops
-  -r, --robots.txt                       With default value the tool check the robots.txt file (default true)
-  -u, --url string                       You need to specify URL
-  -v, --version                          version for Cyrops
-  -w, --wordlist string                  You can specify Wordlist (default "wordlist/seclistWebContent.txt")
-```
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Linkedin</strong></td><td></td><td><a href=".gitbook/assets/indir (2).png">indir (2).png</a></td><td></td><td><a href="https://www.linkedin.com/in/yavuzkuk/">https://www.linkedin.com/in/yavuzkuk/</a></td></tr><tr><td><strong>Github</strong></td><td></td><td><a href=".gitbook/assets/indir (1).png">indir (1).png</a></td><td></td><td><a href="https://github.com/yavuzkuk?tab=repositories">https://github.com/yavuzkuk?tab=repositories</a></td></tr><tr><td><strong>Try Hack Me</strong></td><td></td><td><a href=".gitbook/assets/b2ba8993f18937bb82ee2f3f60a32673.png">b2ba8993f18937bb82ee2f3f60a32673.png</a></td><td></td><td><a href="https://tryhackme.com/p/Backf6">https://tryhackme.com/p/Backf6</a></td></tr></tbody></table>
