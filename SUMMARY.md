@@ -6,6 +6,8 @@
 
 * [Beef](araclar/beef.md)
 * [FFUF](araclar/ffuf.md)
+* [Gobuster](araclar/gobuster.md)
+
 <!-- * [Images & media](araclar/images-and-media.md)
 * [Interactive blocks](araclar/interactive-blocks.md)
 * [OpenAPI](araclar/openapi.md)
