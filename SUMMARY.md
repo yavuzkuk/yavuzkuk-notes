@@ -10,8 +10,3 @@
 * [Hashcat](araclar/hashcat.md)
 * [Hydra](araclar/hydra.md)
 * [Zphisher](araclar/zphisher.md)
-
-<!-- * [Images & media](araclar/images-and-media.md)
-* [Interactive blocks](araclar/interactive-blocks.md)
-* [OpenAPI](araclar/openapi.md)
-* [Integrations](araclar/integrations.md) -->
