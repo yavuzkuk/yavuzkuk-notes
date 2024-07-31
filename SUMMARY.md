@@ -9,7 +9,7 @@
 
 ## 🚩 Araçlar
 
-* [Editor](araclar/editor.md)
+* [Beef](araclar/beef.md)
 * [Markdown](araclar/markdown.md)
 * [Images & media](araclar/images-and-media.md)
 * [Interactive blocks](araclar/interactive-blocks.md)
