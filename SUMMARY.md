@@ -2,11 +2,6 @@
 
 * [Ben kimim?](README.md)
 
-## 🚩 OWASP Top 10
-
-<!-- * [Quickstart](owasp-top-10/quickstart.md)
-* [Publish your docs](owasp-top-10/publish-your-docs.md) -->
-
 ## 🚩 Araçlar
 
 * [Beef](araclar/beef.md)
