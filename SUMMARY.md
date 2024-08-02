@@ -2,6 +2,10 @@
 
 * [Ben kimim?](README.md)
 
+## 🚩 OWASP TOP 10
+
+* [LFI (Local File Inclusion)](owasp-top-10/lfi-local-file-inclusion.md)
+
 ## 🚩 Araçlar
 
 * [Beef](araclar/beef.md)
