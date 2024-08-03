@@ -1,7 +1,7 @@
 ---
 cover: >-
   ../.gitbook/assets/Default_A_dimly_lit_server_room_with_rows_of_humming_machines_1.jpg
-coverY: 123.1701244813278
+coverY: 197.80929973905978
 layout:
   cover:
     visible: true
