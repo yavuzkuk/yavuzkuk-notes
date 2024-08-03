@@ -4,6 +4,7 @@
 
 ## 🚩 OWASP TOP 10
 
+* [Command Injection](owasp-top-10/command-injection.md)
 * [LFI (Local File Inclusion)](owasp-top-10/lfi-local-file-inclusion.md)
 
 ## 🚩 Araçlar

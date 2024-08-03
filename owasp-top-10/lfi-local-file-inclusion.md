@@ -1,7 +1,7 @@
 ---
 cover: >-
   ../.gitbook/assets/Default_A_futuristic_hightech_illustration_depicts_the_concept_2.jpg
-coverY: 69
+coverY: 114.06224066390041
 layout:
   cover:
     visible: true
@@ -68,15 +68,15 @@ Fotoğrafta görünen ?file parametresi dikkatinizi çekmiştir, _**../../../../
 
 ### Lab 1
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 İlk labımızda bir input alanına girdiğimiz dosya isimlerini bize getiren bir mekanizma var. Olmayan bir dosya adını girdiğimizde ise bir hata alıyoruz.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 İlk labımız olduğu için herhangi bir kısıtlama olmadığını düşünüp ve çıkan hataya baktığımızda input alanına yazdığımız içeriğin direkt bir şekilde include (dahil edildiğini) görünce deneme amaçlı input alanına yazıyorum.
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 Evet herhangi bir kontrol yapılmamış ve direkt bir şekile /etc/passwd dosyasımızın içeriğine ulaşmış olduk.
 
