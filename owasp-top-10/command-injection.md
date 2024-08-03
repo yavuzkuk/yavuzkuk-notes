@@ -37,7 +37,7 @@ Bu saldırı türü, genellikle bir uygulamanın kullanıcı girdisini doğru ş
 1. **Blind Injection :** Bu tür saldırı tipinde, payloadları test ederken uygulamadan doğrudan çıktı almadığımız senaryolardır. Payloadların başarılı olup olmadığını belirlemek için uygulamanın davranışlarını araştırmanız gerekecektir. Göndereceğimiz payloadın çıktısını göremeyeceğimiz için işlemin bitiş zamanı ile ilgili manipülasyonlarda bulunabiliriz. Ne demek oluyor bitiş zamanı manipülasyonu. `sleep` ve `ping` komutlarıyla işlemlerin bitişlerinin ertelenmesi sağlanır.
 2. **Verbose Command Injection :** Bu tür saldırı tipinde ise girdiğimiz komutun çıktısını ekranda görebilir durumdayız. Bu tür saldırılarda genel olarak `ls` ve `whoami` gibi komutlar sıklıkla kullanılır.
 
-Command Injection zafiyetini simüle etmek için Try Hack Me Command Injection labı üzerinden anlatım yapacağım.
+Command Injection zafiyetini simüle etmek için [Try Hack Me Command Injection labı](https://tryhackme.com/r/room/oscommandinjection) üzerinden anlatım yapacağım.
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
