@@ -68,7 +68,7 @@ Fotoğrafta görünen ?file parametresi dikkatinizi çekmiştir, _**../../../../
 
 ### Lab 1
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 İlk labımızda bir input alanına girdiğimiz dosya isimlerini bize getiren bir mekanizma var. Olmayan bir dosya adını girdiğimizde ise bir hata alıyoruz.
 

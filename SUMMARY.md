@@ -16,3 +16,4 @@
 * [Hashcat](araclar/hashcat.md)
 * [Hydra](araclar/hydra.md)
 * [Zphisher](araclar/zphisher.md)
+* [Wpscan](araclar/wpscan.md)
