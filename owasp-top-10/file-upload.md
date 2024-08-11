@@ -178,7 +178,7 @@ Yukarıdaki kod ile 1234 portundan gelen istekleri dinleyebiliyoruz. Sonrasında
 
 Dosyayı çalıştırdığımız an netcat ile shell alabiliyor ve komutları çalıştırabiliyoruz.
 
-<figure><img src="../.gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/fileUpload/netcatUzantı.png" alt=""><figcaption></figcaption></figure>
 
 ### Magic Byte Bypass
 
@@ -188,4 +188,46 @@ Bazı sistemlerde filtreleme için dosyaların başında bulunan Magic Byte kıs
 file php-reverse-shell.php
 // Çıktı: php-reverse-shell.php: PHP script, ASCII text
 ```
+
+Gönderdiğimiz dosyanın jpg dosyası olarak algılanması için php dosyasının başına ```FF D8 FF EE``` baytlarını eklememiz gerekiyor. Öncelikle php dosyamızın başına AAAA gibi bir kısım ekliyoruz. 
+
+<figure><img src="../.gitbook/assets/fileUpload/magicbyte.png"><figcaption></figcaption></figure>
+
+Php dosyamızın başına ekleme yaptıktan sonra hexeditor ile baktığımızda şöyle bir durum karşımıza çıkıyor. 
+
+<figure><img src="../.gitbook/assets/fileUpload/hexeditor.png"><figcaption></figcaption></figure>
+
+[Şu adresten](https://en.wikipedia.org/wiki/List_of_file_signatures) dosyaların Magic Byte değerlerine ulaşabiliriz. Bu örneğimiz için `FF D8 FF EE` değerini kullanacağız. Yukarıda hexeditor üzerinden açtığımızda 41 değerlerinin yerine bu değerleri yazıyoruz.
+
+<figure><img src="../.gitbook/assets/fileUpload/hexeditor2.png"><figcaption></figcaption></figure>
+
+Bundan sonra Magic Byte kontrolü yapan sistemler dosyamızı artık php olarak değil bir JPEG dosyası olarak algılar.
+
+```
+file php-reverse-shell.php
+// Çıktı: php-reverse-shell.php: JPEG image data
+```
+Bu şekilde sistemlere farklı formatlarda dosyalar yükleyebiliriz.
+
+Bizim reverse shell alacağımız sistemde sadece GIF formatında dosyalara izin veriyor. 
+
+<figure><img src="../.gitbook/assets/fileUpload/onlyGIF.png"><figcaption></figcaption></figure>
+
+Şimdi gidip GIF dosya tipinin Magic Byte değerini öğrenip aynı şekilde eklememiz gerek.
+
+Geçen örneğimizde php dosyamızı JPG tipine çevirmiştik ve hexeditor üzerinden yapmıştık hexdeğerlerini eklemiştik. Şimdi daha kolay olması açısından hex değerlerini değil de ASCII değerlerini ekleyeceğiz. Bunun için nano ile dosyamızı açıyoruz.
+
+<figure><img src="../.gitbook/assets/fileUpload/gifbyte.png"><figcaption></figcaption></figure>
+
+Nano ile dosyamızı açtıktan sonra `GIF87a` değerini başa ekleyeceğiz ve bu sayede .php uzantılı dosyamız GIF olarak algılanacak ve sisteme yükleyebileceğiz.
+
+Bu sayede artık yükleme yapabiliriz. Gobuster ile dosyaların nereye yüklendiği öğrenmemiz lazım sonrasında netcat ile gelen istekleri dinleyip dosyayı çalıştırmamız lazım.
+
+<figure><img src="../.gitbook/assets/fileUpload/magicbyteDirectory.png"><figcaption></figcaption></figure>
+
+Bazı durumlarda yüklediğimiz içeriklerin nerede olduğunu bulabiliriz ama yüklenen dosyaları tıklayarak çalıştıramayız. Bunun için url üzerinden dosyayı seçmemiz gerekiyor. 
+
+URL üzerinden `http://magic.uploadvulns.thm/graphics/php-reverse-shell.php` sayfasına gitmemiz lazım ve dosyamızı çalıştırmammız lazım bu sayede dosyamız çalışmaya başlar ve netcat aracılığıyla shell alabiliyoruz. 
+
+<figure><img src="../.gitbook/assets/fileUpload/magicByteShell.png"></figure><figcaption></figcaption></figure>
 
