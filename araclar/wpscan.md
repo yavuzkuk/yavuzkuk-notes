@@ -25,7 +25,7 @@ Aracımızın sahip olduğu parametreleri görmek için şu komutu kullanıyoruz
 wpscan -h
 ```
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 Bir web sitesi üzerinde tarama gerçekleştireceğimiz için bir url parametresine ihtiyacımız var. `--url` parametresiyle test edeceğimiz web sitesini parametre olarak veriyoruz.
 
