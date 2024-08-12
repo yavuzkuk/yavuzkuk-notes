@@ -1,6 +1,6 @@
 # Nmap
 
-<figure><img src="../.gitbook/assets/nmap/nmaplogo.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/nmap/nmaplogo.jpg" alt=""><figcaption></figcaption></figure>
 
 Nmap(Network Mapper) ağ keşfi ve güvenlik denetimleri için kullanılan açık kaynaklı ve güçlü bir tarama aracıdır. Nmap sayesinde ağda bulunan cihazları, bu cihazların kullandığı servisleri, servislerin versiyonları, açık olan portları, işletim sistemlerini listeleyen bir araçtır. 
 
