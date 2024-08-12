@@ -16,5 +16,6 @@
 * [Gobuster](araclar/gobuster.md)
 * [Hashcat](araclar/hashcat.md)
 * [Hydra](araclar/hydra.md)
+* [Nmap](araclar/nmap.md)
 * [Zphisher](araclar/zphisher.md)
 * [Wpscan](araclar/wpscan.md)
