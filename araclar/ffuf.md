@@ -1,6 +1,6 @@
 # FFUF
 
-<figure><img src="../.gitbook/assets/ffuf/ffufLogo.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/ffuf/ffufLogo.png" alt=""><figcaption></figcaption></figure>
 
 FFUF aracı Go dili ile yazılmış web sitelerinde kullanılabilen bir dizin tarama aracıdır. Benzer işlemleri yapan Gobuster, Dirbuster vb. araçlar gibi temel olarak iki parametreye ihtiyaç duyar. Biri tarama yapılacak bir hedef, diğer ise tarama esnasında kullanılacak bir wordlist.
 
@@ -10,7 +10,7 @@ Bu yazıda Gobuster yazımda olduğu gibi temel olarak dizin tarama özellikleri
 
 FFUF'u yüklemek için yapmak gerekenler çok basit. Komut satırına `sudo apt install ffuf` yazmak yeterli olacaktır.
 
-<figure><img src="../.gitbook/assets/ffuf/ffufyukleme.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/ffuf/ffufyukleme.png" alt=""><figcaption></figcaption></figure>
 
 Bu işlemin başarı ile sonuçlanıp sonuçlanmadığını anlamak için  `ffuf --help` yazdığımızda aracımızın yardım ekranın çıkması lazım.
 
@@ -51,13 +51,13 @@ Hangi tarzda arama cümlesi yazacağınız size kalmış.
 
 Gobuster yazımda da daha iyi anlatabilmek için kullandığım localimde bulunan bu dosya yapısını kullanacağım.&#x20;
 
-<figure><img src="../.gitbook/assets/ffuf/ffuf dizin.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../assets/ffuf/ffuf dizin.png" alt="" width="563"><figcaption></figcaption></figure>
 
 Kullanacağımız wordliste yukarıdaki dosyalar ve dizinler olmadığı için "denemeKlasoru" kelimesini ekliyorum. Sonrasında tarama yapmak için şu komutu yazıyoruz:
 
 `ffuf -u http://192.168.1.5/CTF/ctfLogin/FUZZ -w subdomains-top1million-5000.txt`
 
-<figure><img src="../.gitbook/assets/ffuf/ffuf sonuc.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/ffuf/ffuf sonuc.png" alt=""><figcaption></figcaption></figure>
 
 Localimizde yaptığımız sitede böyle bir sonuç alıyoruz. Canl bir sitede yapmak istiyorsak değişen bir şey olmuyor. Şimdi canlı bir site olan [https://www.bakka.gov.tr/](https://www.bakka.gov.tr/) sitesinde deneyelim.
 
@@ -99,19 +99,19 @@ Bulduğumuz dizinde hangi uzantıya sahip dosyaların olduğun anlamak için uza
 
 Yukarıdaki kodun çıktısı olarak anladık ki ilk adımda bulduğumuz denemeKlasoru içinde bulunan index dosyasının uzantısın .php olduğunu buluyoruz. Bundan sonraki adımda dizin içindeki dosyaları keşfetmek için .php uzantılı bir wordlist kullanacağız.
 
-<figure><img src="../.gitbook/assets/ffuf/extens fuzz.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../assets/ffuf/extens fuzz.png" alt="" width="563"><figcaption></figcaption></figure>
 
 &#x20;
 
 Bulduğumuz bu klasorun içinde tam olarak ne olduğunu bilmiyoruz. Yeni bulduğumuz bu klasör içinde yine tarama yapabiliriz. Sadece kullanacağımız URL de küçük bir değişik olucak ayrıca wordlistimizi değiştireceğiz. Araştırarak sık kullanılan dosya isimlerini içeren bir [wordlist](https://github.com/emadshanab/WordLists-20111129/blob/master/Filenames\_Doted\_All.wordlist) buldum.
 
-<figure><img src="../.gitbook/assets/ffuf/page fuzzing.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/ffuf/page fuzzing.png" alt=""><figcaption></figcaption></figure>
 
 Denemeklasorunun içinde ise şu 4 dosya bulunuyor. Şimdi FFUF ile bu 3 dosyayı bulmak için şu komutu yazıyoruz.
 
 `ffuf -u http://192.168.1.5/CTF/ctfLogin/denemeKlasoru/FUZZ -w subdomain-filename.txt`
 
-<figure><img src="../.gitbook/assets/ffuf/page fuzzing2.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../assets/ffuf/page fuzzing2.png" alt="" width="563"><figcaption></figcaption></figure>
 
 Sonuç olarak şöyle bir sonuç alıyoruz.
 
@@ -123,7 +123,7 @@ Syntax olarak daha önce yaptıklarımıza gayet benzer bir şey yapacağız sad
 
 `ffuf -u https://www.FUZZ.google.com -w subdomains-top1million-5000.txt`
 
-<figure><img src="../.gitbook/assets/ffuf/subdomain sonuc.png" alt=""><figcaption><p>Yukarıda gördüğünüz üzere bir sürü subdomain çıkıyor.</p></figcaption></figure>
+<figure><img src="../assets/ffuf/subdomain sonuc.png" alt=""><figcaption><p>Yukarıda gördüğünüz üzere bir sürü subdomain çıkıyor.</p></figcaption></figure>
 
 ### Recursive Fuzzing
 

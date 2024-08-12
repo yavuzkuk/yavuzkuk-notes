@@ -1,7 +1,7 @@
 # Hashcat
 
 <figure>
-<image src="../.gitbook/assets/hashcat/hashcatLogo.png">
+<image src="../assets/hashcat/hashcatLogo.png">
 </figure>
 
 Hashcat açık kaynaklı bir hash çözümleme tooludur. Çoğu web sitesinde şifreler ile sisteme giriş işlemleri kontrol edilir. Bu kontrollerin sağlanması için ise bir veri tabanına ihtiyaç vardır. Güvenli bir web sitesinde kullanıcıların şifreleri düz bir metin olarak değil, hashlenmiş bir şekilde tutulması gerekiyor. 
@@ -27,11 +27,11 @@ Hashcat'in nasıl çalıştığına geçmeden önce hash ne demek kısaca bundan
 
 Linux üzerinde kurulum için ```sudo apt install hashcat``` komutunu çalıştırmamız gerekiyor.
 
-<figure><image src="../.gitbook/assets/hashcat/install.png"></figure>
+<figure><image src="../assets/hashcat/install.png"></figure>
 
 Sonrasında toolumuzun doğru bir şekilde çalışıp çalışmadığını öğrenmek için ```hashcat --help``` komutunu yazıyoruz.
 
-<figure><image src="../.gitbook/assets/hashcat/hashcathelp.png"></figure>
+<figure><image src="../assets/hashcat/hashcathelp.png"></figure>
 
 Karşımıza uzun bir yardım dökümanı karşımıza çıkıyor.
 
@@ -51,28 +51,28 @@ Ayrıca Hashcat toolumuzun ```--keep-guessing``` parametresi ile hashlerin hangi
 
 ```yavuzkuk``` kelimesini <a href="https://bcrypt.online/">Bcrypt</a> sitesinden hashledikten sonra, Hashcat ile hash tipini tespit etmek istediğimde bir sonuç alamadım.
 
-<figure><image src="../.gitbook/assets/hashcat/keepGues1.png"></figure>
+<figure><image src="../assets/hashcat/keepGues1.png"></figure>
 
 <a href="https://www.tunnelsup.com/hash-analyzer/">Hash Analyzer</a> sitesini kullandığımda hash tipin doğru bir şekilde buldu.
 
-<figure><image src="../.gitbook/assets/hashcat/hashAnalyzer1.png"></figure>
+<figure><image src="../assets/hashcat/hashAnalyzer1.png"></figure>
 
 
 <a href="https://hashes.com/en/tools/hash_identifier">Hash Indetifier</a> sitesini kullandığımda hash tipin doğru bir şekilde buldu.
 
-<figure><image src="../.gitbook/assets/hashcat/hashIdentifier1.png"></figure>
+<figure><image src="../assets/hashcat/hashIdentifier1.png"></figure>
 
 Diğer hashler üzerinden yaptığım denemelerde Hashcat SHA1,SHA256, SHA512, MD5 hashlerin tipini doğru tespit edebildi.
 
 Hashcati kullanırken hangi hash türü üzerinde işlem yapacağımızı ```-m <sayi>``` parametresi ile vereceğiz.
 
-<figure><image src="../.gitbook/assets/hashcat/hashmode.png"></figure>
+<figure><image src="../assets/hashcat/hashmode.png"></figure>
 
 Yukarıda bahsettiğim web sitelerinden hash tipini öğrenip, hashcat --help çıktısından öğrenebiliriz.
 
 Örnek vermek gerekise MD5 tipinde bir hash için şu adımları yapabiliriz.
 
-<figure><image src="../.gitbook/assets/hashcat/hashcatmode.png"></figure>
+<figure><image src="../assets/hashcat/hashcatmode.png"></figure>
 
 Gördüğünüz gibi ikinci komutumuzdan sonra MD5 hashi 0 değeri ile ifade ediliyor. hashcat komutunu kullanırken -m parametresi, ```-m 0``` olarak ayarlanır.
 
@@ -149,18 +149,18 @@ Kırmak istediğimiz hash: ```d177b4d1d9e6b6fa86521e4b3d00b029```
 
 Bu hashin hangi tipte olduğunu bilmiyoruz. Yukarıda gösterdiğim sitelerden ya da Hashcat içinde bulunan ```--keep-guessing``` parametresi ile hash tipini öğrenmeye çalışabiliriz. 
 
-<figure><image src="../.gitbook/assets/hashcat/exampleHash.png"></figure>
+<figure><image src="../assets/hashcat/exampleHash.png"></figure>
 
 Hash tipimiz SHA2-512 olduğunu öğreniyoruz. Hashcat toolu ile -m parametresine hangi değeri vermemiz gerekiyor onu öğrenmeliyiz. Bu yüzden ```hashcat --help | grep SHA2-512``` komutunu çalıştırıyoruz. 
 
-<figure><image src="../.gitbook/assets/hashcat/helpMd5.png"></figure>
+<figure><image src="../assets/hashcat/helpMd5.png"></figure>
 
 -m parametremizi de öğrendiğimize göre artık hash işlemlerine başlayabiliriz.
 
 ```hashcat -m 0 -a 0 d177b4d1d9e6b6fa86521e4b3d00b029 rockyou.txt``` komutuyla saldırımız başlıyor.
 
 
-<figure><image src="../.gitbook/assets/hashcat/result.png"></figure>
+<figure><image src="../assets/hashcat/result.png"></figure>
 
 
 Son örnek olarak Mask Attack yöntemini kullanacağız. Vereceğimiz desen ise şu şekildedir:
@@ -177,14 +177,14 @@ Kırmak istediğimiz hash değeri: ```f00b6af455ad1934568b94ea7284bfa600594de8c3
 
 Öncelikle hash türümüzü öğrenmemiz lazım. Tekrardan söylüyorum yukarıda bahsettiğim siteleri kullanabiliriz.
 
-<figure><image src="../.gitbook/assets/hashcat/secondQuest.png"></figure>
+<figure><image src="../assets/hashcat/secondQuest.png"></figure>
 
 
 Hash türümüzü öğrendikten sonra komutumuzu yazabiliriz.
 
 ```hashcat -m 1700 -a 3 f00b6af455ad1934568b94ea7284bfa600594de8c3865e4fdb7cb1b12ab2f93677f9c62388016b87280e11807296a081836dd3fa4a77e6e1ce019f326eb4c120 ?u?l?l?s?d?d```
 
-<figure><image src="../.gitbook/assets/hashcat/secondAnswer.png"></figure>
+<figure><image src="../assets/hashcat/secondAnswer.png"></figure>
 
 Bu işlemler sonucunda şifreye ulaşıyoruz.
 
