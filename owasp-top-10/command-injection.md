@@ -1,6 +1,6 @@
 ---
 cover: >-
-  ../.gitbook/assets/Default_A_dimly_lit_server_room_with_rows_of_humming_machines_1.jpg
+  ../assets/Default_A_dimly_lit_server_room_with_rows_of_humming_machines_1.jpg
 coverY: 268.71651623390517
 layout:
   cover:
@@ -39,7 +39,7 @@ Bu saldırı türü, genellikle bir uygulamanın kullanıcı girdisini doğru ş
 
 Command Injection zafiyetini simüle etmek için [Try Hack Me Command Injection labı](https://tryhackme.com/r/room/oscommandinjection) üzerinden anlatım yapacağım.
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/command/commandfirst.png" alt=""><figcaption></figcaption></figure>
 
 Fotoğrafta da gördüğünüz gibi verdiğiniz bir IP adresine ping atıyor. Bu yapılan işlem için arkada bir ping komutu çalışıyor. Bizden aldığı IP değerini de ping komutunun sonuna ekliyor ve o adrese ping atıyor.
 
@@ -58,6 +58,6 @@ Aynı anda birden fazla komut çalıştırmak için bazı ara karakterlere ihtiy
 
 Payloadı girdikten sonra istediğimiz dosyanın içeriğini okuyabiliyoruz.
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/command/commandShell.png" alt=""><figcaption></figcaption></figure>
 
 Çeşitli senaryolarda çeşitli karakterler ve komutlar engellenir. Farklı komutlar kullanılarak engeller aşılabilir.

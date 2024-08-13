@@ -1,6 +1,6 @@
 ---
 cover: >-
-  ../.gitbook/assets/Default_A_futuristic_hightech_illustration_depicts_the_concept_2.jpg
+  ../assets/Default_A_futuristic_hightech_illustration_depicts_the_concept_2.jpg
 coverY: 114.06224066390041
 layout:
   cover:
@@ -26,7 +26,7 @@ Normal bir web sitesinde normal bir kullanıcının görmesi gereken dosyalar ol
 
 Bazı durumlarda web uygulamaları ekranda gösterecek olacağı sayfaları, fotoğrafları, videoları vb. parametre olarak alır.
 
-<figure><img src="../.gitbook/assets/httpsdomain.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/httpsdomain.png" alt=""><figcaption></figcaption></figure>
 
 Web sitesini geliştiren kişi ?file parametresiyle sunucuda bulunan dosyaları ekrana yansıtabiliyor. Ama aynı şekilde kötü niyetli insanlar bu parametreyi manipüle ederek normal kullanıcıların görmemesi gereken dosya içeriklerini görebiliyor.
 
@@ -56,7 +56,7 @@ Bu konuyu uygulamalı anlatmak için [Try Hack Me File Inclusion](https://tryhac
 
 ***
 
-<figure><img src="../.gitbook/assets/THMFİLE.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfiDiagram.png" alt=""><figcaption></figcaption></figure>
 
 Fotoğrafta gördüğünüz gibi normal şartlarda url de bulunan **?file** parametresiyle /var/www/app/CVs/userCv.pdf dosyasına ulaşmamız gerekirken, **?file** parametresini manipüle ederek /etc/passwd dosyasına ulaşmış oluyoruz.
 
@@ -64,29 +64,29 @@ Fotoğrafta görünen ?file parametresi dikkatinizi çekmiştir, _**../../../../
 
 &#x20;
 
-<figure><img src="../.gitbook/assets/currentPath.png" alt="" width="536"><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/currentPath.png" alt="" width="536"><figcaption></figcaption></figure>
 
 ### Lab 1
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/fileLab.png" alt=""><figcaption></figcaption></figure>
 
 İlk labımızda bir input alanına girdiğimiz dosya isimlerini bize getiren bir mekanizma var. Olmayan bir dosya adını girdiğimizde ise bir hata alıyoruz.
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/fileError.png" alt=""><figcaption></figcaption></figure>
 
 İlk labımız olduğu için herhangi bir kısıtlama olmadığını düşünüp ve çıkan hataya baktığımızda input alanına yazdığımız içeriğin direkt bir şekilde include (dahil edildiğini) görünce deneme amaçlı input alanına yazıyorum.
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfiShell.png" alt=""><figcaption></figcaption></figure>
 
 Evet herhangi bir kontrol yapılmamış ve direkt bir şekile /etc/passwd dosyasımızın içeriğine ulaşmış olduk.
 
-<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption><p>İlk sorunun cevabı</p></figcaption></figure>
+<figure><img src="../assets/lfi/lfiAnswer.png" alt=""><figcaption><p>İlk sorunun cevabı</p></figcaption></figure>
 
 #### Lab 2
 
 İkinci laba baktığımızda görünüş olarak diğer labla birebir aynı. Deneme amaçlı rastgele bir girdi girdiğimizde, hata mesajıyla karşılaşıyoruz.
 
-<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfi2Answer.png" alt=""><figcaption></figcaption></figure>
 
 Input kısmına admin yazmama rağmen verdiği hata mesajında includes/admin şeklinde hata veriyor. Yani includes klasörünün altında admini arıyor. Daha önce yaptığımız gibi input kısmına _**/etc/passwd**_ yazarsak bize şöyle bir hata verecektir.&#x20;
 
@@ -96,11 +96,11 @@ Warning: include(includes/etc/passwd) [function.include]: failed to open stream:
 
 Bizim burada ilk yapmamız gereken şey includes klasöründen çıkmak olacaktır. Bunun için ../ kullanacağız. Bir tane kullanmak bizim için yetmiyecektir. / dizinine ulaşmamız lazım bu yüzden fazla fazla ../ karakterlerini kullanabiliriz.
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfi2shell.png" alt=""><figcaption></figcaption></figure>
 
 .. / karakterleriyle /  klasörüne kadar çıktım buradan sonra /etc/passwd klasörüne ulaşabilirim.
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfi2THMAnswer.png" alt=""><figcaption></figcaption></figure>
 
 2.soruda labda hangi fonksiyonun kullanıldığı sorulmuş daha öncesinde hata mesajımızda include() fonksiyonunu görmüştük.
 
@@ -108,7 +108,7 @@ Bizim burada ilk yapmamız gereken şey includes klasöründen çıkmak olacakt�
 
 3.labda baktığımızda yine aynı içerik sayfası karşımızda deneme amaçlı rastgele bir şey yazıyorum ve çıkan hatayı kontrol ediyorum.
 
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfiTry.png" alt=""><figcaption></figcaption></figure>
 
 Input alanında deneme diye giriş yapıyorum ve hataya baktığımda yine _**includes**_ dizinini içinde olduğunu görüyoruz 2.labdan farkı girmiş olduğumuz dosyanın sonuna .php eklentisi ile birleştirmesi. 2.labda dizin içinden nasıl çıkacağımızı öğrendik ama uzantıyı nasıl devre dışı bırakacağız bunu bilmiyoruz. .php kısmını devre dışı bırakmak için ise Null Byte denilen bir karakteri kullanacağız.
 
@@ -116,25 +116,25 @@ Null Byte PHP 5.3.4 sürümünden sonra kaldırılmış durumda güncel sürüml
 
 İlk başta içinde bulunduğumuz klasörden, / (kök) dizine kadar geri çıkalım ve sonrasında php uzantısını görmemesi için Null Byte kullanabiliriz. Bu dediklerimizi uygulayınca şöyle bir payload karşımıza çıkıyor:
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfinull.png" alt=""><figcaption></figcaption></figure>
 
 Doğru bir payload yazmamıza rağmen istediğimiz çıktıyı alamıyoruz. Yazdığımız içerik url de karşımıza çıkıyor. Deneme işlemini bu sefer de url üzerinden yapalım ve çıktımıza bakalım.
 
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfi3shell.png" alt=""><figcaption></figcaption></figure>
 
 Ve evet aynı payload ile url üzerinden denediğimizde çıktıyı alabiliyoruz.
 
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfi3shellTHM.png" alt=""><figcaption></figcaption></figure>
 
 #### Lab 4
 
 Yine aynı ekran bizi karşılıyor, deneme amaçlı rastgele bir değer giriyoruz.
 
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfi4try.png" alt=""><figcaption></figcaption></figure>
 
 Göründüğü kadarıyla herhangi bir klasörün içinde değiliz geriye gitmemiz gerekmiyor. Direkt bir şekilde /etc/passwd dosyasın ulaşmaya çalışalım.
 
-<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfi4error.png" alt=""><figcaption></figcaption></figure>
 
 Kodu görütüleyemiyoruz. Bazı sistemlerde belirli dizinlere karşı filtreleme kullanılır. LFI zafiyeti olduğunu kanıtlamak /etc/passwd dosyası kullanıldığı için siteyi hazırlayan kişi burada bir filtreleme işlemi yapmış olabilir. Eğer inputtan _**/etc/passwd**_ değeri gelirse gösterme demiş olabilir.
 
@@ -150,59 +150,59 @@ Yukarıda gördüğünüz payload işe yarayacaktır ama başka bir payload gös
 /etc/passwd/.
 ```
 
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfi4shell.png" alt=""><figcaption></figcaption></figure>
 
 Hatamızda gördüğümüz fonksiyonun ismini cevap olarak giriyoruz.
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfi4THM.png" alt=""><figcaption></figcaption></figure>
 
 #### Lab 5
 
 Daha hızlı ilerleyebilmek için `../../../../../../../../../../etc/passwd` şeklinde deneme yapıyorum.&#x20;
 
-<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfi5.png" alt=""><figcaption></figcaption></figure>
 
 Girmiş olduğum inputun içinde ../ karakterleri olmasına göre sarı ile belirtmiş olduğum hata mesajında herhangi bir ../ karakteri göremiyorum. Bu yüzden includes klasöründen çıkamıyorum. Yazılımcı siteyi hazırlarken ../ karakterlerini silnmesi için bir kod yazmış olmalı.&#x20;
 
 Bu durum içinde şöyle bir taktik geliştiriyoruz. 4 tane . (nokta) işaretinden sonra 2 tane / işareti koyuyoruz ve sistem ilk gördüğü ../ karakter grubunu siliyor. Sonrasında ekstradan koyduğumuz noktalar ve slash işareti birleşip yeni bir ../ karkater grubu oluşturuyor.
 
-<figure><img src="../.gitbook/assets/slash.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/slash.png" alt=""><figcaption></figcaption></figure>
 
 Belirttiğim duruma göre bir payload hazırladığımızda /etc/passwd dosyasına ulaşıyoruz.&#x20;
 
-<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/slashShell.png" alt=""><figcaption></figcaption></figure>
 
 #### Lab 6
 
 Tekrardan devam ediyoruz aynı sayfa bizi karşılıyor ve yukarıda belirttiğim komutu girdiğimde bana sadece THM-profile altında bulunan dosyalara erişimim olduğunu söylüyor ve input kısmında bulunan placeholder kısmına bakarsanız bize örnek bir dizin gösteriyor.
 
-<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/THMprofile.png" alt=""><figcaption></figcaption></figure>
 
 Bize gösterdiği örnek dizin üzerinden bir şeyler yapabiliriz gibi geliyor o dizinden çıkmamız gerekiyor. Daha önce öğrendiğimiz ../ karakterlerine göre tekrardan payload hazırlayalım ama şuna dikkat etmeliyiz payloadımızın başlangıcı THM-profile ile başlayacak.
 
-<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfi6shell.png" alt=""><figcaption></figcaption></figure>
 
 Soru olarak baktığımızda nasıl /etc/passwd klasörüne ulaştıysak /etc/ os-release klasörüne erişmemiz isteniyor ve cevabı 12.04 olarak buluyoruz.
 
-<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfithm.png" alt=""><figcaption></figcaption></figure>
 
 #### Challenge 1
 
-<figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lifpost.png" alt=""><figcaption></figcaption></figure>
 
 Normalde girdiğimiz inputu göndermek istediğimizde girdiğimiz değer GET parametresiyle gidiyor. Soruda da belirttiği gibi bunu POST yapmamız isteniyor. Bunu nasıl yapacağız Burp Suite sayesinde yapacağız. Giden isteği durdurup istek tipini değiştireceğiz.
 
 İnput alanına girdiğimiz değer GET parametresiyle giderken şu şekilde gidiyor.
 
-<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/burprequest.png" alt=""><figcaption></figcaption></figure>
 
 Turuncu şekilde işaretlenmiş olan özellik ile istek tipini değiştirebiliriz. Artık isteğimiz bu şekilde gözükecektir.
 
-<figure><img src="../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfiburp.png" alt=""><figcaption></figcaption></figure>
 
 Soruda bizden /etc/flag1 dosyasının içindeki flag değerini istiyor.
 
-<figure><img src="../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfithm1.png" alt=""><figcaption></figcaption></figure>
 
 Aynı şekilde passwd yerine flag1 yazdığımızda cevaba ulaşıyoruz.
 
@@ -210,21 +210,21 @@ Aynı şekilde passwd yerine flag1 yazdığımızda cevaba ulaşıyoruz.
 
 Sayfayı açar açmaz karşımıza böyle bir ekran geliyor. Sadece adminler erişebilir diye bir yazı var.
 
-<figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfiGuest.png" alt=""><figcaption></figcaption></figure>
 
 Bu sayfa benim admin olup olmadığımı nerde biliyor. Sayfayı yenileyelim Burp Suite ile araya girip giden gelen paketleri kontrol edelim.&#x20;
 
-<figure><img src="../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfiCookie.png" alt=""><figcaption></figcaption></figure>
 
 Giden paketler arasında 11. satırda bir Cookie değeri var ve _Guest_ değerini almış. Bu Cookie değerini manipüle ettiğimde yukarıda ki uyarı ekranında ki Welcome Guest yazısı da değişiyor.
 
 Yani ben Cookie değerine ne yazarsam ekrana o çıktıyı veriyor. Bu olayı farkına vardıktan sonra Cooki değerine `../../../../../etc/flag2` diye değer veriyorum.&#x20;
 
-<figure><img src="../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfiFlag2.png" alt=""><figcaption></figcaption></figure>
 
 Ama görüyoruz ki girmiş olduğumuz payloadın sonuna php uzantısı eklenmiş bu durumu aşmak içinde Null Byte kullanıyoruz `../../../../../etc/flag2%00`  ve cevaba ulaşıyoruz.
 
-<figure><img src="../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/flag2.png" alt=""><figcaption></figcaption></figure>
 
 #### Challenge 3
 
@@ -232,15 +232,15 @@ Burp Suite ile 3.challenge a baktığımızda yine cookie değeri gönderiliyor.
 
 Bu sefer / karakterlerimi silmedi pathimi doğru yazdı ama yine istediğim sonuca ulaşamadım. Arkada giden Cookie değerini admin olarak gönderirsem belki işe yarayabilir. Boş yere Cookie değerini göndermez diye düşünüyorum.
 
-<figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/flag3.png" alt=""><figcaption></figcaption></figure>
 
 Ve bu payload sonucunda çıktıyı alıyoruz.
 
-<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/flag3shell.png" alt=""><figcaption></figcaption></figure>
 
 Ama bize /etc/flag3 dosyasının içindeki değer soruluyor. Aynı işlemleri yapıyoruz sadece passwd yazılacak yere flag3 yazıyoruz ve cevaba ulaşıyoruz.
 
-<figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfiTHM.png" alt=""><figcaption></figcaption></figure>
 
 #### Playground
 
@@ -266,13 +266,13 @@ Bu komut sayesinde Try Hack Me'ye bağlandığımız adres üzerinden dosyaları
 
 Input alanına da bu dosyanın adresini vereceğiz ve sistem php dosyasında bulunan kodu çalıştırıp ekranımıza yazdırıcak.
 
-<figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfiplay.png" alt=""><figcaption></figcaption></figure>
 
 Linkin başında ki ip OpenVPN'in bağlanırken bana sağlamış olduğu ip adresi.
 
 Ve cevaba ulaşıyoruz.
 
-<figure><img src="../.gitbook/assets/image (38).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../assets/lfi/lfiplayshell.png" alt="" width="563"><figcaption></figcaption></figure>
 
 Kaynak: [Try Hack Me File Inclusion](https://tryhackme.com/r/room/fileinc)
 

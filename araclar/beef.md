@@ -2,7 +2,7 @@
 
 BeEF, The Browser Exploitation Framework'in kısaltmasıdır Türkçesi olarak Tarayıcı Sömürme Aracı gibi çevirebiliriz . Web tarayıcısına odaklanan bir penetrasyon test aracıdır.
 
-<figure><img src="../.gitbook/assets/beef/beef.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/beef.jpg" alt=""><figcaption></figcaption></figure>
 
 Mobil tarayıcılar da dahil olmak üzere web tarayıcısına odaklanan bir penetrasyon test aracıdır.
 
@@ -28,13 +28,13 @@ git clone https://github.com/beefproject/beef.git
 
 2. Sonrasında indirdiğimiz dosyanın içine girelim. ls komutunu çalıştırdığımızda şöyle bir görüntü ile karşılaşmamız lazım.
 
-<figure><img src="../.gitbook/assets/beef/image13.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image13.png" alt=""><figcaption></figcaption></figure>
 
 3. Öncelikle kullanıcak olduğumuz toolun gereksinimleri indirmemiz gerekiyor.
 4. ./install komutunu çalıştırdıktan sonra çıkan sorulara "y" cevabını veriyoruz.
 5. İndirme işlemleri bittikten sonra ./beef dediğimizde sistemiz başlıyor olucak ama ilk defa kurulum yapıyorsanız default kullanıcı adı ve şifre kullanıyor olduğunuz için sistem çalışmicaktır.
 
-<figure><img src="../.gitbook/assets/beef/image14.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image14.png" alt=""><figcaption></figcaption></figure>
 
 6. Öncelikle config.yaml üzerinden kullanıcı adımızı ve şifremizi değiştirmeliyiz. Bunun için şunları yapıyoruz.
 
@@ -42,7 +42,7 @@ git clone https://github.com/beefproject/beef.git
 nano config.yaml
 ```
 
-<figure><img src="../.gitbook/assets/beef/image15.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image15.png" alt="" width="563"><figcaption></figcaption></figure>
 
 User ve passwd alanları değiştirip kaydediyoruz.
 
@@ -50,11 +50,11 @@ User ve passwd alanları değiştirip kaydediyoruz.
 
 ### BeEF kullanımı
 
-<figure><img src="../.gitbook/assets/beef/image16.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image16.png" alt="" width="563"><figcaption></figcaption></figure>
 
 ./beef yazdıktan sonra işaretli olan URL'i tarayıcımızda açtığımızda BeEFF toolunun paneli açılıyor. Kurulum esnasın değiştirdiğimiz kullanıcı adı ve şifre ile buradan giriş yapıyoruz.
 
-<figure><img src="../.gitbook/assets/beef/image18.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image18.png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### Peki BeEF nasıl çalışır?
 
@@ -99,7 +99,7 @@ Sunucu kurulumundan sonra da /var/www/html altında bulunan index.html dosyamız
 
 Düzenlemeden önce terminal üzerinden BeEF toolunu çalıştırdığımızda karşımıza çıkan yazılarının arasından karşı tarafa yüklemek istediğimiz JavaScript dosyasının linkini not etmeliyiz.
 
-<figure><img src="../.gitbook/assets/beef/image19.png" alt="" width="541"><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image19.png" alt="" width="541"><figcaption></figcaption></figure>
 
 hook.js dosyasını not ettikten sonra /var/www/html altında bulunan dosyayı düzenleyebiliriz. Öncelikle istediğimiz dizine gidip orada bulunan index.html'i silmek istiyorum. Sonrasında kendi index.html dosyamı oluşturacağım. Sırasıyla şu komutlarla devam ediyoruz.
 
@@ -139,27 +139,27 @@ service apache2 start
 
 Serverın başlayıp başlamadığını anlamak için IP adresimizi tarayıcımıza yazıyoruz.
 
-<figure><img src="../.gitbook/assets/beef/image20.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image20.png" alt=""><figcaption></figcaption></figure>
 
 Böyle bir sayfanın bizi karşılaması lazım. Kurulumlar hazır bundan sonra kullanıcıya bu sitemizin linkini ulaştırmak kalıyor. Farklı phishing yöntemleri deneyerek saldırılarınızı yapabilirsiniz.
 
 Yaptığımız siteyi ana bilgisayarımda açmadan önce BeEF arayüzüne giriyoruz.
 
-<figure><img src="../.gitbook/assets/beef/image21.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image21.png" alt="" width="563"><figcaption></figcaption></figure>
 
 Açılan arayüz ekranında sol tarafta bize bağlanmış olan kullanıcılar gözüküyor olucak. Daha önce kimseyi sistemimize bağlamadığımız için şimdilik boş gözüküyor.
 
 Şimdi sistemimize birini bağlamak için hazırlamış olduğumuz siteyi ana bilgisayarımızda açıyoruz.
 
-<figure><img src="../.gitbook/assets/beef/image9.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image9.png" alt="" width="563"><figcaption></figcaption></figure>
 
 Sitemize girdikten sonra BeEF üzerinden baktığımızda kullanıcı sistemimize bağlanmış durumda.
 
-<figure><img src="../.gitbook/assets/beef/image10.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image10.png" alt=""><figcaption></figcaption></figure>
 
 Üstüne tıkladığımızda browser hakkkında bilgiler ve yapabileceklerimizi görebiliyoruz.
 
-<figure><img src="../.gitbook/assets/beef/image11.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image11.png" alt=""><figcaption></figcaption></figure>
 
 Bu arayüz üzerinden Details sekmesinden browser hakkında ve cihaz hakkında temel bilgileri alabiliyoruz.
 
@@ -175,7 +175,7 @@ Arama kısmına Redirect Browser yazdığımızda ve açılan pencerede verdiği
 
 Arama kısmına Fake Flash Update yaptığınızda ve sağ tarafta bulunan payload URI kısmını istediğiniz bir linke doldurup. Kullanıcıya gönderdiğinizde kullanıcının ekranına şöyle bir çıktı geliyor.
 
-<figure><img src="../.gitbook/assets/beef/image12.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../assets/beef/image12.png" alt="" width="563"><figcaption></figcaption></figure>
 
 Eğer kullanıcı herhangi bir yere dokunursa verdiğiniz URL'e yönlendirilir. Belki de bu sayede kullanıcıya zararlı yazılım yüklemesini sağlayabilirsiniz.
 
