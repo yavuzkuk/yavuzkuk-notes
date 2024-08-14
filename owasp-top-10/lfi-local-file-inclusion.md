@@ -276,4 +276,4 @@ Ve cevaba ulaşıyoruz.
 
 Kaynak: [Try Hack Me File Inclusion](https://tryhackme.com/r/room/fileinc)
 
-Bu yazı [_Yavuz Kuk_](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.
+> Bu yazı [*Yavuz Kuk*](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.

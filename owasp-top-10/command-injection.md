@@ -61,3 +61,6 @@ Payloadı girdikten sonra istediğimiz dosyanın içeriğini okuyabiliyoruz.
 <figure><img src="../assets/command/commandShell.png" alt=""><figcaption></figcaption></figure>
 
 Çeşitli senaryolarda çeşitli karakterler ve komutlar engellenir. Farklı komutlar kullanılarak engeller aşılabilir.
+
+
+> Bu yazı [*Yavuz Kuk*](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.

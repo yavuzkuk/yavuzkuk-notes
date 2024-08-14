@@ -231,3 +231,5 @@ URL üzerinden `http://magic.uploadvulns.thm/graphics/php-reverse-shell.php` say
 
 <figure><img src="../assets/fileUpload/magicByteShell.png"></figure><figcaption></figcaption></figure>
 
+
+> Bu yazı [*Yavuz Kuk*](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.

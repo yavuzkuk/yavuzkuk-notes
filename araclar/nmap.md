@@ -228,3 +228,8 @@ Nmap'te -sC parametresi, "default scripts" olarak bilinen Nmap Scripting Engine 
 -sC parametresi, belirli bir hedefte yaygın güvenlik açıklarını hızlıca kontrol etmek veya hedef hakkında daha fazla bilgi toplamak için idealdir.
 
 ```nmap -sC <IP>```
+
+
+Kaynak: [THM Network Security](https://tryhackme.com/module/network-security)
+
+> Bu yazı [*Yavuz Kuk*](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.

@@ -147,3 +147,5 @@ Run komutuyla birlikte exploitimiz çalışmaya başlıyor. Buradaki amacımız 
 <figure><img src="../assets/wpscan/wpscanshell.png" alt=""><figcaption></figcaption></figure>
 
 Ve evet shell aldık, sistem üzerinde komutlar çalıştırabiliyoruz.&#x20;
+
+> Bu yazı [*Yavuz Kuk*](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.
