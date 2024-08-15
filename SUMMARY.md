@@ -19,3 +19,8 @@
 * [Nmap](araclar/nmap.md)
 * [Zphisher](araclar/zphisher.md)
 * [Wpscan](araclar/wpscan.md)
+
+
+## 🚩 Protokoller
+
+* [Beef](potokoller/telnet.md)
