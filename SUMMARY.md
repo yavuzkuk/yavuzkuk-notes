@@ -23,4 +23,4 @@
 
 ## 🚩 Protokoller
 
-* [Beef](potokoller/telnet.md)
+* [Telnet](potokoller/telnet.md)
