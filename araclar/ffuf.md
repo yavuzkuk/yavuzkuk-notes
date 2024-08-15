@@ -12,7 +12,7 @@ FFUF'u yüklemek için yapmak gerekenler çok basit. Komut satırına `sudo apt 
 
 <figure><img src="../assets/ffuf/ffufyukleme.png" alt=""><figcaption></figcaption></figure>
 
-Bu işlemin başarı ile sonuçlanıp sonuçlanmadığını anlamak için  `ffuf --help` yazdığımızda aracımızın yardım ekranın çıkması lazım.
+Bu işlemin başarı ile sonuçlanıp sonuçlanmadığını anlamak için `ffuf --help` yazdığımızda aracımızın yardım ekranın çıkması lazım.
 
 ### FUZZ kelimesi
 
@@ -20,7 +20,7 @@ Bir sistemin veya uygulamanın beklenmedik veya hatalı davranışlarını ortay
 
 ### Directory Fuzzing
 
-Parametre olarak verilen bir web sitesi altında bulunan dizinleri/klasörleri tespit etmek için kullanılır. Tespit edilen klasörlerden çeşitli gizli sayfalara erişilebilir, çeşitli zafiyetler sömürülebilir.&#x20;
+Parametre olarak verilen bir web sitesi altında bulunan dizinleri/klasörleri tespit etmek için kullanılır. Tespit edilen klasörlerden çeşitli gizli sayfalara erişilebilir, çeşitli zafiyetler sömürülebilir.
 
 FFUF aracı ile dizin taraması yapmak için şöyle bir söz dizimine ihtiyacımız var:
 
@@ -32,26 +32,26 @@ Daha önce Gobuster ve benzeri bir araçla çalıştıysanız sadece hedef URL'i
 
 `ffuf -w subdomains-top1million-5000.txt -u https://www.bakka.gov.tr/FUZZ`
 
-Burada FUZZ yazma amacımız wordlisten alınan kelimelerin nereye geleceğinin göstermek içindir.&#x20;
+Burada FUZZ yazma amacımız wordlisten alınan kelimelerin nereye geleceğinin göstermek içindir.
 
 * https://www.bakka.gov.tr/admin
-* https://www.bakka.gov.tr/test          vb. şeklinde linklere deneme yapılıyor.
+* https://www.bakka.gov.tr/test vb. şeklinde linklere deneme yapılıyor.
 
 FFUF hakkında çeşitli araştırma, yazılar okursanız şöyle bir yazım ile karşılaşabilirsiniz:
 
 `ffuf -w subdomains-top1million-5000.txt:FUZZ -u https://www.bakka.gov.tr/FUZZ`
 
-Burada yapılan şey yukarıda bahsettiğimle aynı şey oluyor. Buradaki işlemi wordlisten alınan kelimelerin FUZZ kelimesine atandığını sonrasında bu kelimeleri url'e eklendiğini düşünebilirsiniz. Eğer wordlisti verdikten sonra iki nokta ( : ) ile böyle bir kelime ataması yaparak tarama yapmak istiyorsanız illa FUZZ yazmanıza gerek yok. &#x20;
+Burada yapılan şey yukarıda bahsettiğimle aynı şey oluyor. Buradaki işlemi wordlisten alınan kelimelerin FUZZ kelimesine atandığını sonrasında bu kelimeleri url'e eklendiğini düşünebilirsiniz. Eğer wordlisti verdikten sonra iki nokta ( : ) ile böyle bir kelime ataması yaparak tarama yapmak istiyorsanız illa FUZZ yazmanıza gerek yok.
 
 `ffuf -w subdomains-top1million-5000.txt:asd -u https://www.bakka.gov.tr/asd`
 
-Wordlisten sonra noktalı virgül ile istediğinizi yazabilirsiniz ama URL'in sonuna aynı kelimeyi eklemelisiniz.&#x20;
+Wordlisten sonra noktalı virgül ile istediğinizi yazabilirsiniz ama URL'in sonuna aynı kelimeyi eklemelisiniz.
 
 Hangi tarzda arama cümlesi yazacağınız size kalmış.
 
-Gobuster yazımda da daha iyi anlatabilmek için kullandığım localimde bulunan bu dosya yapısını kullanacağım.&#x20;
+Gobuster yazımda da daha iyi anlatabilmek için kullandığım localimde bulunan bu dosya yapısını kullanacağım.
 
-<figure><img src="../assets/ffuf/ffuf dizin.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../assets/ffuf/ffuf dizin (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 Kullanacağımız wordliste yukarıdaki dosyalar ve dizinler olmadığı için "denemeKlasoru" kelimesini ekliyorum. Sonrasında tarama yapmak için şu komutu yazıyoruz:
 
@@ -63,7 +63,7 @@ Localimizde yaptığımız sitede böyle bir sonuç alıyoruz. Canl bir sitede y
 
 `ffuf -u https://www.bakka.gov.tr/FUZZ -w subdomains-top1million-5000.txt`
 
-FFUF ile tarama yaparken hedef sisteme sürekli istek gönderdiğimiz için, sıkı bir güvenlik politikası olan  sitelerde sürekli aynı IP üzerinden çıkan istekler şüpheli olacağı için site tarafından engellenme durumu söz konusu olabilir.&#x20;
+FFUF ile tarama yaparken hedef sisteme sürekli istek gönderdiğimiz için, sıkı bir güvenlik politikası olan sitelerde sürekli aynı IP üzerinden çıkan istekler şüpheli olacağı için site tarafından engellenme durumu söz konusu olabilir.
 
 İstek sayısını çok fazla arttırmamız durumunda server gelen bütün isteklere cevap veremez ve devre dışı kalabilir. Bu yüzden istemsizce DOS-DDOS saldırısı yaparak hedefimizi devre dışı bırakmamak için istek sayılarımızı makul bir seviyede tutmalıyız.
 
@@ -101,8 +101,6 @@ Yukarıdaki kodun çıktısı olarak anladık ki ilk adımda bulduğumuz denemeK
 
 <figure><img src="../assets/ffuf/extens fuzz.png" alt="" width="563"><figcaption></figcaption></figure>
 
-&#x20;
-
 Bulduğumuz bu klasorun içinde tam olarak ne olduğunu bilmiyoruz. Yeni bulduğumuz bu klasör içinde yine tarama yapabiliriz. Sadece kullanacağımız URL de küçük bir değişik olucak ayrıca wordlistimizi değiştireceğiz. Araştırarak sık kullanılan dosya isimlerini içeren bir [wordlist](https://github.com/emadshanab/WordLists-20111129/blob/master/Filenames\_Doted\_All.wordlist) buldum.
 
 <figure><img src="../assets/ffuf/page fuzzing.png" alt=""><figcaption></figcaption></figure>
@@ -119,7 +117,7 @@ Sonuç olarak şöyle bir sonuç alıyoruz.
 
 Bu konu başlığımızda ise FFUF ile subdomainlerin varlığı kontrol edeceğiz. Subdomain keşfetmek bizim ne işimize yarayacak derseniz, gizli veya hassas bilgileri bulma, eski veya güvenliksiz uygulamalar, farklı uygulama ve servisleri bulma gibi durumlarda işimize yarar.
 
-Syntax olarak daha önce yaptıklarımıza gayet benzer bir şey yapacağız sadece kullandığımız FUZZ kelimesi URL'in sonunda değil başında yer alacak. Google'un bir sürü subdomani i olduğu için bu örneğimizde Google'ı kullanacağım.&#x20;
+Syntax olarak daha önce yaptıklarımıza gayet benzer bir şey yapacağız sadece kullandığımız FUZZ kelimesi URL'in sonunda değil başında yer alacak. Google'un bir sürü subdomani i olduğu için bu örneğimizde Google'ı kullanacağım.
 
 `ffuf -u https://www.FUZZ.google.com -w subdomains-top1million-5000.txt`
 
@@ -139,4 +137,4 @@ Burada kullandığım -e parametresi wordliste bulunan kelimelerin sonuna ekleni
 
 Ne kadar büyük bir -recursion-depth değeri verirseniz tarama o kadar uzun sürer.
 
-> Bu yazı [*Yavuz Kuk*](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.
+> Bu yazı [_Yavuz Kuk_](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.
