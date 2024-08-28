@@ -16,10 +16,10 @@
 * [Gobuster](araclar/gobuster.md)
 * [Hashcat](araclar/hashcat.md)
 * [Hydra](araclar/hydra.md)
+* [John the Ripper](araclar/john-the-ripper.md)
 * [Nmap](araclar/nmap.md)
 * [Zphisher](araclar/zphisher.md)
 * [Wpscan](araclar/wpscan.md)
-
 
 ## 🚩 Protokoller
 
