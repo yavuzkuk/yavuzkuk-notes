@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Ben kimim?](README.md)
+* [Linux Privilege Escalation (Linux Yetki Yükseltme)](linux-privilege-escalation-linux-yetki-yukseltme.md)
 
 ## 🚩 OWASP TOP 10
 
