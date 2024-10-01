@@ -1,3 +1,9 @@
+---
+cover: >-
+  ../.gitbook/assets/Leonardo_Phoenix_A_hauntingly_minimalist_digital_illustration_2.jpg
+coverY: 414
+---
+
 # JWT Bypass
 
 Bu yazıda JWT Bypass hakkında bilgiler vereceğim. Ama öncesinde JWT nedir onu anlayalım. JWT (JSON Web Token), kimlik doğrulama ve veri güvenliği için yaygın olarak kullanılan bir standarttır. İnternette özellikle API'lar, web servisleri ve mikroservis mimarileri gibi çeşitli yerlerde veri alışverişini güvenli hale getirmek için tercih edilir.
