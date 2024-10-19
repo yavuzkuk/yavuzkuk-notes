@@ -113,7 +113,7 @@ Sepet kısmına gidiyoruz ve ekranı yeniliyoruz.
 
 Ve evet indirim kodlarını birden fazla defa kullanabilmişiz. Elimizde 50$ vardı bu fiyatla ceketi alabiliriz ve soruyu çözebiliriz.
 
-### Lab: Bypassing rate limit via race conditions
+### [Lab: Bypassing rate limit via race conditions](https://portswigger.net/web-security/race-conditions/lab-race-conditions-bypassing-rate-limits)
 
 Bu labımızda bir sisteme race condition ile girmeye çalışacağız. Öncelikle sisteme wiener:peter bilgileriyle girebiliyoruz. Soruyu çözmek için bizden istenen şey ise carlos kullanıcıs ile sisteme girş yaparak admin panelinden carlos kullanıcısını silmek olucaktır.&#x20;
 
@@ -149,7 +149,7 @@ Hedef bir sistemde bazı işlemlerden sonra başka küçük işlemler oluşur. B
 
 Arka tarafta kaydımız gerçekleştikten sonra 2FA sayfasına gitmeden önce başka bir sayfaya istek atarak 2FA adımından kaçabiliriz. Çeşitli araştırmalar sonucunda profiles.php adında bir sayfa olduğunu ve normalde 2FA doğrulaması yapmadan bu sayfaya ulaşamıyoruz. Bu işlemi yapmak için öncelikle sisteme kayıt olan bir istek oluşturuyoruz ve bunu repeatera atıyoruz. Sonrasında profiles.php sayfasına istek atan bir isteği repeatera atıyoruz ve bu iki isteği grupluyoruz. Bu grubu aynı anda sisteme gönderdiğimizde hızlıca kayıt oluyor ve ardından çok hızlıca 2FA doğrulaması yapmadan profiles.php sayfasına ulaşmış oluyoruz.
 
-## Lab: Multi-endpoint race conditions
+## [Lab: Multi-endpoint race conditions](https://portswigger.net/web-security/race-conditions/lab-race-conditions-multi-endpoint)
 
 Bu lab az önce bahsettiğimiz labın bir tık daha karışık hali. Bu labda bizden istenen şey 100$ para ile 1337$ olan ceketi almamız isteniyor. Öncelikle wiener:peter bilgileriyle sisteme giriş yapıyoruz.&#x20;
 
@@ -170,3 +170,6 @@ Bu iki isteği repeatera gönderiyoruz. Bizim burada yapmamız gereken şey önc
 Repetarda bulunan isteklerden biri ceketin eklenmesi diğeri ise sepetin onaylanması. Paralel bir şekilde istekleri göndererek race window aralığında çakışmanın gerçekleşmesi beklenir ve ceketi bu şekilde alabiliriz. İstekleri gönderdikten sonra soruya dönüp ekranı yenilediğimizde soruyu çözmüş oluyoruz.
 
 <figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+
+> Bu yazı [_Yavuz Kuk_](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.
+
