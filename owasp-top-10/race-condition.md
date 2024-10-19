@@ -1,7 +1,7 @@
 ---
 cover: >-
   ../.gitbook/assets/Leonardo_Phoenix_A_cyber_securitythemed_illustration_showing_t_0.jpg
-coverY: 323
+coverY: 449.88659793814435
 layout:
   cover:
     visible: true
