@@ -30,7 +30,7 @@ john --wordlist=rockyou.txt hash1.txt
 
 Bu komutu yazdıktan sonra aracımız bize algoritma tipi hakkında bilgi verir.&#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Aracımız bize hash algoritması hakkında bilgi verdi ve bu bilgiler eşliğinde işlemlerimizi yapabiliriz. Kullanılan hash tipini format parametresiyle belirtmemiz gerekiyor, hash algoritmalarının bazı özel isimleri olabiliyor bu formatları listelemek için şu komutu kullanabiliriz.&#x20;
 
@@ -40,13 +40,13 @@ Aracımız hash algortiması olarak md5 olarak bize sonuç verdi, format olarak 
 
 `john --list=formats | grep MD5`
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 MD5 için format belirtirken Raw-MD5 şeklinde belirtmemiz gerekiyor. Aracı kullanırken ayrıca bir wordlist vermemiz gerekiyor. Bunun içinse --wordlist parametresini vermemiz gerekiyor. Wordlist olarak rockyou.txt dosyasını kullanacağım.&#x20;
 
 `john --wordlist=rockyou.txt --format=Raw-MD5 hash1.txt`
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 İlk hash değerimizin asıl orjinal değeri biscuit olduğunu anlamış olduk.
 
@@ -56,29 +56,29 @@ MD5 için format belirtirken Raw-MD5 şeklinde belirtmemiz gerekiyor. Aracı kul
 
 Web sitesi hash algoritması olarak SHA1 olarak sonuç verdi.
 
-<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 John the Ripper aracının SHA1 için kullandığı parametre şekli nedir öncelikle ona bakalım.
 
 `john --list=formats | grep SHA1`
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 Format olarak Raw-SHA1 olarak belirteceğiz. Benzer şekilde komudumuzu yazdıktan sonra hashin değerini ulaşabiliyoruz.
 
 `john --wordlist=rockyou.txt --format=Raw-SHA1 hash2.txt`
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
 Üçüncü örneğimizde aynı şekilde bir hash değerini çözeceğiz. Öncelikle hash algoritmasını tespit etmek için Hashes sitesinden algoritma tespiti yapıyoruz.
 
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 
 Bulunan hash formatına göre kodumuzu düzenleyip hashin sonucuna ulaşıyoruz.
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
 NT hash (veya NTLM), modern Windows işletim sistemlerinde kullanıcı ve servis parolalarını saklamak için kullanılan bir hash formatıdır. Bu, "NT/LM" olarak da adlandırılır; burada "LM", eski Windows sürümlerinde kullanılan bir parola hash formatına atıfta bulunur.
 
@@ -86,17 +86,17 @@ Elimizde `5460C85BD858A11475115D2DD3A82333`Windows tipinde bir hash değerimiz v
 
 [Hashes ](https://hashes.com/en/tools/hash\_identifier)sitesinden baktığımızda da şöyle bir sonuç çıkıyor.
 
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
 NTLM algoritmasının format tipini öğrenmek için şu komutu kullanıyoruz:
 
 `john --list=formats | grep  NT`
 
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
 
 `john --wordlist=rockyou.txt --format=nt ntlm.txt`
 
-<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -106,17 +106,17 @@ Nasıl Windows sistemlerin şifrelerini öğrendiysek Linux sistemlerin şifrele
 
 `unshadow /etc/shadow /etc/passwd > unshadow.txt`
 
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
 
 Ortaya çıkan dosya üzerinde algoritma tespiti yaptıktan sonra format parametresini gönderip hash değerimizi kırıyoruz.
 
-<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (15) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
 John the Ripper'da bulunan "single crack mode", genellikle en hızlı ve basit parola kırma yöntemlerinden biridir. Bu mod, kullanıcının adını ve diğer mevcut bilgileri kullanarak basit parolaları kırmayı amaçlar. Bu yöntem, özellikle zayıf ve tahmin edilebilir parolalar için çok etkilidir.
 
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (16) (1).png" alt=""><figcaption></figcaption></figure>
 
 Elimde joker kullanıcısına ait böyle bir hash var. Format olarak kullanıcı bilgisi:hash şeklindedir.
 
@@ -126,13 +126,13 @@ Elimde joker kullanıcısına ait böyle bir hash var. Format olarak kullanıcı
 
 Öncelikle hangi hash algoritmasını kullandığını öğrenmek için `john --single hash.txt` kodunu yazıyoruz.&#x20;
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17) (1).png" alt=""><figcaption></figcaption></figure>
 
 Md5 algoritması kullanıyor. Format değeri belirtirken Raw-MD5 şeklinde belirteceğimizi daha önce görmüştük.
 
 `john --single --format=Raw-MD5 hash.txt`
 
-<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (18) (1).png" alt=""><figcaption></figcaption></figure>
 
 Orjinel değere ulaşıyoruz.
 
@@ -142,11 +142,11 @@ John aracıyla Zip dosyalarının şifrelerini de kırabiliriz. Öncelikle zip d
 
 zip2john \<zipDosya> > \<txtDosya>
 
-<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (19) (1).png" alt=""><figcaption></figcaption></figure>
 
 Herhangi bir format bildirmeden wordlist değerimizi vererek şifreyi kırabiliyoruz.
 
-<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (20) (1).png" alt=""><figcaption></figcaption></figure>
 
 Aynı şekilde RAR dosyalarını da John the Ripper ile kırabiliriz. Jonh aracının içeriği anlayabilmesi için bu sefer `rar2john` aracını kullanacağız çıktı üzerinde aynı işlemleri yapıp kıracağız.
 
