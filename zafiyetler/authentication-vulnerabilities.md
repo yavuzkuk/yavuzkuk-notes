@@ -1,6 +1,20 @@
 ---
 cover: ../.gitbook/assets/c96a2afd-bc0a-4571-8bb8-18bef0b4f07f.jpeg
-coverY: 345
+coverY: 609.5013333333334
+layout:
+  cover:
+    visible: true
+    size: hero
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Authentication Vulnerabilities
