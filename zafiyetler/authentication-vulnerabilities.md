@@ -1,3 +1,8 @@
+---
+cover: ../.gitbook/assets/c96a2afd-bc0a-4571-8bb8-18bef0b4f07f.jpeg
+coverY: 345
+---
+
 # Authentication Vulnerabilities
 
 Authentication vulnerabilities, yani kimlik doğrulama zafiyetleri, bir sistemde kullanıcıların kimliğini doğrularken oluşabilecek güvenlik açıklarını ifade eder. Kimlik doğrulama, bir kullanıcının kim olduğunu sistemin doğrulama işlemidir ve bu işlem genellikle kullanıcı adı ve şifre kombinasyonu ile yapılır. Ancak, bu süreçte meydana gelen zafiyetler, kötü niyetli kişilerin yetkisiz erişim sağlamasına neden olabilir.&#x20;
