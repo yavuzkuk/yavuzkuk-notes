@@ -3,14 +3,15 @@
 * [Ben kimim?](README.md)
 * [Linux Privilege Escalation (Linux Yetki Yükseltme)](linux-privilege-escalation-linux-yetki-yukseltme.md)
 
-## 🚩 OWASP TOP 10
+## 🚩 Zafiyetler
 
-* [Command Injection](owasp-top-10/command-injection.md)
-* [File Upload](owasp-top-10/file-upload.md)
-* [XSS (Cross Site Scripting)](owasp-top-10/xss-cross-site-scripting.md)
-* [LFI (Local File Inclusion)](owasp-top-10/lfi-local-file-inclusion.md)
-* [Race Condition](owasp-top-10/race-condition.md)
-* [JWT Bypass](owasp-top-10/jwt-bypass.md)
+* [Authentication Vulnerabilities](zafiyetler/authentication-vulnerabilities.md)
+* [Command Injection](zafiyetler/command-injection.md)
+* [File Upload](zafiyetler/file-upload.md)
+* [XSS (Cross Site Scripting)](zafiyetler/xss-cross-site-scripting.md)
+* [LFI (Local File Inclusion)](zafiyetler/lfi-local-file-inclusion.md)
+* [Race Condition](zafiyetler/race-condition.md)
+* [JWT Bypass](zafiyetler/jwt-bypass.md)
 
 ## 🚩 Araçlar
 
