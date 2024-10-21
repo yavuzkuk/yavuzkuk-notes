@@ -57,29 +57,29 @@ Bu işlemler için öncelikle sepetimize ceketi ekliyoruz.
 
 Sonrasında sepet kısmına gidip indirim kodu eklemek için bize tanımlana PROMO20 kodunu yazıyoruz.&#x20;
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 Kodu yazıp hemen göndermiyoruz. Bu esnada Burp Proxy özelliğini açıyoruz sonrasında kodu uygula tuşuna basıyoruz. Kodun uygulandığı esnadaki giden paket bize lazım. Bu paketi alıp tekrar tekrar göndermemiz gerekiyor.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Kodu uygula butonuna bastığımızda arka tarafta böyle bir istek atılıyor. Biz bu isteği bir sürü defa göndermek istiyoruz o yüzden isteğe sağ tıklayıp Burp Repeatera göndermemiz gerekiyor. Bu arada yukarıda yakaladığımız isteği drop etmemiz gerekiyor. Repeater'a gönderdiğimiz isteği birde fazla hale getirmemiz gerekiyor. Öncelikle yapıcağımız istekleri gruplamamız lazım.&#x20;
 
 İsteğin yanında bulunan + sembolüne basıp Create New Group diyoruz. Burada istediğimiz ismi, rengi ve kullanacağımız isteği seçiyoruz.
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 Bir tane istek içeren bir grup oluşturduk. Şimdi bu istekleri çoğaltmanın sırası. Oluşturduğumuz istek grubuna sağ tıklıyoruz ve Duplicate tab diyoruz.
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Karşımıza çıkan popup kısmına isteği kaç defa tekrar etmek istiyorsak o sayıyı giriyoruz. Bu örnekte 100 tane istek oluştursun istiyorum.&#x20;
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 Bu işlemlerden sonra 100 tane aynı isteği gerçekleştiren isteklerimiz oluyor.  Bu istekleri oluşturduk ama hala biz bunları hedef sisteme işlemesi için göndermedik. Şimdi burada yapacağımız şey şu olucak istekleri gönderme şekillerini inceleyeceğiz.
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 Send butonunun yanında bulunan ok işaretine bastığımızda istekleri farklı farklı şekillerde gönderebileceğimizi görüyoruz. Sırasıyla bunlara bakalım.
 
@@ -103,13 +103,13 @@ O yüzden aynı anda bir sürü istek atarak isteklerin çakışmasını sağlam
 
 Hazırlamış olduğumuz istekleri gönderip sistemde birden fazla indirim kodu kullanıp elimizde bulunan 50$ ile ceketi alabiliyor olmamız lazım.
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 İsteklerimizi paralel bir şekilde gönderdik çarpışma durumu olduysa indirim kodunu birden fazla defa kullanabilmişizdir.
 
 Sepet kısmına gidiyoruz ve ekranı yeniliyoruz.
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
 Ve evet indirim kodlarını birden fazla defa kullanabilmişiz. Elimizde 50$ vardı bu fiyatla ceketi alabiliriz ve soruyu çözebiliriz.
 

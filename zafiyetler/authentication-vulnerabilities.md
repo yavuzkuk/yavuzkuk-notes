@@ -40,7 +40,7 @@ Yapılan denemeler sonucunda 302 status code ile dönen bir cevap var bu demek o
 
 Bu tür brute-force açıklarını engellemek için çok fazla deneme yapıldıktan sonra IP banı ya da kullanıcıyı kısa bir süre bekletmek çözüm olarak kullanılabilir.&#x20;
 
-## Lab: Broken brute-force protection, IP block
+## [Lab: Broken brute-force protection, IP block](https://portswigger.net/web-security/authentication/password-based/lab-broken-bruteforce-protection-ip-block)
 
 Bu örneğimizde çok fazla yanlış giriş işleminde bulununca sistem bizi kısa bir süreliğine engelliyor. Sorunun başında `wiener:peter` bilgileriyle sisteme giriş yapabileceğimizden bahsediyor ayrıca saldırıda bulunacağımız kullanıcı adının carlos olduğunu söylüyor.
 
@@ -74,3 +74,33 @@ Bu ayardan sonra saldırıyı başlatabiliriz.  Saldırını sırasına baktığ
 <figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
 Bu sonuç gösteriyor ki `carlos:hockey` bilgileriyle sisteme giriş yapabiliriz ve soruyu çözebiliriz.
+
+***
+
+Şimdiye kadar gördüğümüz kısımlar sadece şifre ile yönetilen kısımlardır. Bazı web siteleri MFA (multi-factor authentication) dediğimiz yöntemler kullanır. Şifre ile doğrulamanın yanında kullanıcının sahip olduğu bir cihaza SMS ile ya da sahip olduğu bir mail hesabına gönderilen bir kod ile ikinci bir doğrulama sistemi çalıştırılabilir. Bu tür doğrulama yöntemlerine 2FA (2 Factor Authentication) diyoruz.&#x20;
+
+Çeşitli yöntemlerle birlikte bu 2FA doğrulama yöntemini aşabiliriz.&#x20;
+
+## [Lab: 2FA broken logic](https://portswigger.net/web-security/authentication/multi-factor/lab-2fa-broken-logic)
+
+Sisteme giriş yapmak için iki farklı giriş bilgisi verilmiş biri kendi hesabımız olan wiener:peter diğeri ise carlos kullanıcısı. carlos kullanıcısını şifresini bilmiyoruz. Öncelikle sistemi gözlemek için kendi bilgilerimizle sisteme giriş yapalım ve giden paketleri inceleyelim.&#x20;
+
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+1 numaralı istek sisteme giriş yaparken  göndermiş olduğumuz istektir ve dikkat çeken ekstra bir durum yok. 2 numaralı isteğe baktığımızda login2 sayfasını yani 2FA kodunu girme sayfasını bize getiriyor. Hangi kullanıcı için kod oluşturulacağı da verify cookie değeriyle aktarılıyor. Eğer 2.adımda duran isteği göndermezsek sistem wiener kullanıcısı için 2FA kodu oluşturamaz. Eğer 2.adımda duran istekte bulunan verify değerini carlos yaparsak, carlos kullanıcısı için 2FA kodu oluşturur. Tabii ki de carlos kullanıcısını kullandığı email hesabına erişimimiz yok. Bu yüzden 2FA kod girme esnasında oluşan paketi yakalayıp Intruder ile brute force atağı gerçekleştireceğiz.
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+1 numaralı istekte gönderilen kodu görebiliyorsunuz bunu Intrudera gönderip üstünde çeşitli değiştirmeler yapıyoruz. Parametre olarak gönderilen mfa-code değerlerine Payloads sekmesi altından 0000 - 9999 arası değerler ekliyoruz ve saldırıyı başlatıyoruz.
+
+Brute force işleminden sonra geri dönen cevaplara baktığımızda bir tane cevap hariç diğerleri 200 dönmüş, diğer cevap ise 302 dönmüş durumda.
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+Görmüş oluyoruz ki carlos kullanıcısı için 2FA kodumuzu bulmuş oluyoruz. Bulduğumuz bu kodu kullanmak için tekrardan `wiener:peter` bilgileriyle giriş yapacağız. 2FA kodunu gönderdiğimiz sırada paketi duruyoruz ve paket üzerinde çeşitli düzenlemeler yapıyoruz.
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+Yukarıdaki isteği gönderdiğimizde ve sayfayı yenilediğimizde soruyu çözmüş oluyoruz.
+
+> Bu yazı [_Yavuz Kuk_](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.
