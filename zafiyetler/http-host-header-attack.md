@@ -184,7 +184,8 @@ Host değerini değiştirdiğimizde hata aldık. Host header değerini eski hali
 
 ```
 Host: 0a93000003a4932681f4a2c200f600d0.h1-web-security-academy.net
-Host: deneme"</script><script>alert(document.cookie)</script>
+Host: deneme"></script><script>alert(document.cookie)</script>
 ```
 
-Yukarıdaki host değeriyle parametrelerden kaçabiliriz.&#x20;
+Yukarıdaki host değeriyle parametrelerden kaçabiliriz. İki defa isteği gönderdikten sonra ana sayfa cache olarak saklanır. Buradan sonra tarayıcıdan sayfaya yenilediğimizde soruyu çözmüş oluyoruz.
+
