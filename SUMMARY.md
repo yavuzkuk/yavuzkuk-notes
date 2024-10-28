@@ -8,6 +8,7 @@
 * [Authentication Vulnerabilities](zafiyetler/authentication-vulnerabilities.md)
 * [Command Injection](zafiyetler/command-injection.md)
 * [File Upload](zafiyetler/file-upload.md)
+* [HTTP Host Header Attack](zafiyetler/http-host-header-attack.md)
 * [XSS (Cross Site Scripting)](zafiyetler/xss-cross-site-scripting.md)
 * [LFI (Local File Inclusion)](zafiyetler/lfi-local-file-inclusion.md)
 * [Race Condition](zafiyetler/race-condition.md)
