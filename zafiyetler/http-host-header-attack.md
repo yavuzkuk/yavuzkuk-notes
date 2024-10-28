@@ -82,8 +82,31 @@ Host headerın ne olduğu ne tür sorunlar çıkarabildiğini anladıktan sonra 
 
 ## [Lab: Basic password reset poisoning](https://portswigger.net/web-security/host-header/exploiting/password-reset-poisoning/lab-host-header-basic-password-reset-poisoning)
 
-İlk örneğimiz başka bir kullanıcının şifresini yenileyerek hesabını ele geçirmek olacak. Öncelikle normal bir sistemin nasıl çalıştığını düşünelim. Şifre değiştirme işlemleri temelde iki şekilde gerçekleşiyor, eğer şifrenizi biliyorsanız sisteme giriş yapar ve profil kısmından yeni şifrenizi girip şifrenizi değiştirebilirsiniz. Başka bir yöntem olarak da giriş ekranında bulunan şifremi unuttum kısmına mail adresinizi ya da kullanıcı adınızı girerek size gelen linke tıklayarak şifrenizi değiştirebilirsiniz.&#x20;
+İlk örneğimiz başka bir kullanıcının şifresini yenileyerek hesabını ele geçirmek olacak. Öncelikle normal bir sistemin nasıl çalıştığını düşünelim. Şifre değiştirme işlemleri temelde iki şekilde gerçekleşiyor, eğer şifrenizi biliyorsanız sisteme giriş yapar ve profil kısmından yeni şifrenizi girip şifrenizi değiştirebilirsiniz.&#x20;
+
+Başka bir yöntem olarak da giriş ekranında bulunan şifremi unuttum kısmına mail adresinizi ya da kullanıcı adınızı girerek size gelen linke tıklayarak şifrenizi değiştirebilirsiniz.&#x20;
 
 <figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 
-Bir saldırgan olarak tabii ki de hedefimizde olan kişinin şifresini bilmiyoruz. Bunun için hedefimizin kullanıcı adını kullanarak kendi adına bir şifre yenileme bağlantısı oluşturacağız.
+Bir saldırgan olarak tabii ki de hedefimizde olan kişinin şifresini bilmiyoruz. Bunun için hedefimizin kullanıcı adını kullanarak kendi adına bir şifre yenileme bağlantısı oluşturacağız. Örnek labımızda carlos kullanıcısının şifresini değiştirmemiz ve hesabına erişmemiz gerekiyor.
+
+Konumuz host header saldırısı olduğu için şifre sıfırlama ekranında host header değerini değiştirip nasıl sistemi kendimize uygun şekilde kullanabiliriz bunu düşünmemiz gerekiyor. Öncelikle şifremi unuttum kısmına kendi kullanıcı adımızı girip arka tarafta nasıl bir istek gönderiliyor inceleyelim.
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+Şifre değiştirme işlemi yaparken arka tarafta yukarıdaki gibi bir istek gönderiliyor. Bu istek wiener kullanıcısının mail adresine şifre sıfırlama maili gönderilmesini sağlar.
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+Mailde bulunan linke tıklayınca parametre olarak oluşturulmuş token değerini kontrol ederek şifre sıfırlama işlemi gerçekleşir. Şifre sıfırlama ekranına carlos yazdığımızda da carlos kullanıcısının mailine böyle bir mail gönderiliyor. Bizim burada yapmamız gereken carlos kullanıcısının token değerini ele geçirip şifresini sıfırlamak.&#x20;
+
+Daha önce gösterdiğim şifre sıfırlama isteğindeki host header değeri alınıp, şifre sıfırlama linki olarak kullanılıyor.&#x20;
+
+```
+# İstek
+Host: 0a0a002704ad076181f4c09100d300a1.web-security-academy.net
+
+# Mail
+https://0a0a002704ad076181f4c09100d300a1.web-security-academy.net/forgot-password...
+```
+
