@@ -110,3 +110,81 @@ Host: 0a0a002704ad076181f4c09100d300a1.web-security-academy.net
 https://0a0a002704ad076181f4c09100d300a1.web-security-academy.net/forgot-password...
 ```
 
+Eğer host header değerini maipüle eder ve kendimizin sahip olduğu bir hedefe bu token değerini gönderebiliriz.&#x20;
+
+Senaryo gereği carlos kullanıcısı kendisine gelen bütün maillerde bulunan linklere tıklıyor. Kendisine göndereceğimiz şifre yenileme bağlantısını ziyaret edecek ve bize token değeri ulaşmış olacak.
+
+<figure><img src="../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
+
+Host header değerini değiştirip kendi sahip olduğumuz sunucun adresini giriyoruz ve isteği gönderiyoruz. Sunucu üzerinde gerçekleşen istemleri kontrol ediyoruz ve parametre olarak gelen token değerini görebiliyoruz.&#x20;
+
+<figure><img src="../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
+
+Token değerini alıp tarayıcı üzerinden şifre değişikliği yapabiliriz.&#x20;
+
+<figure><img src="../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
+
+URL'i ayarlayıp carlos kullanıcısının şifresini değiştirebiliriz. Şifre değiştirme işleminden sonra değşitirdiğimiz şifre ile carlos kullanıcısı olarak giriş yapıp soruyu çözebiliriz.
+
+## Lab: Web cache poisoning via ambiguous requests
+
+Bu örneğimizde host header değerini mainpüle ederek web cache sistemiyle diğer kullanıcıları etkileyecek bir örnek lab çözeceğiz. Öncelikle web cache nedir kısaca ondan bahsedelim.&#x20;
+
+Web cache dediğimiz şey sık kullanılan web içeriklerinin (HTML sayfaları, resimler, JavaScript dosyaları vb.) kopyalarını geçici olarak saklayan bir sistemdir. Bu sayede, aynı içeriğe tekrar erişim gerektiğinde sunucunun yeniden veri göndermesine gerek kalmadan bu önbellekten hızla yanıt alınabilir. Web cache, hem sunucu yükünü azaltır hem de kullanıcıların daha hızlı deneyim yaşamasını sağlar.
+
+Web cache bir içerik saklarken key-value şeklinde işlem yapar. Key değeri olarak istek gönderilen url ve parametreler seçilir. Value değeri olarak ise bize döndürülen cevap (response) kullanılır.
+
+Bizim burada yapmamız gereken şey web cache üzerinde zararlıı kod içeren bir sayfa saklamamız gerekiyor. Bunun için öncelikle sayfaların nasıl cache alındığına bakalım.&#x20;
+
+Bir sistemin nasıl cache alındığını anlamak istiyorsak temel olarak iki yöntemi vardır.&#x20;
+
+* Birincisi gelen cevabın süresine bakarak bir azalmanın olup olmadığına bakılabilir.
+* Dönen cevap üzerinde çeşitli header değerleri bize bu durum ile ilgili bilgi verebilir. ( X-Cache, Cache-Control vb.
+
+```
+https://orneksite.com/anasayfa
+
+<html>
+<head></head>
+<body>
+...
+<script>alert(document.cookie)</script>
+.....
+</body>
+</html>
+```
+
+Yukarıdaki örnekte gördüğümüz gibi web cache tarafında `https://orneksite.com/anasayfa` adresine gitmek istediğimizde web cache tarafından bize saklanan yukarıdaki değer döner ve Web Cache poising saldırısını yapmış oluruz.
+
+***
+
+Öncelikle isteklerimizi atmadan ve başlıkları kontrol etmeden önce parametre olarak rastgele bir değer ekliyoruz ki web cache tarafında index sayfasının yerine başka bir şey saklanmasın.
+
+<figure><img src="../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
+
+`https://labId.h1-web-security-academy.net?param=1` adresine istek attığımızda X-Cache değerinin miss olduğunu görüyoruz, ikinci bir istek gönderdiğimizde X-Cache değeri hit oluyor. Bu da demek oluyor ki ikinci istekten sonra istek attığımız sayfa web cache tarafından saklanmış oluyor.&#x20;
+
+Cache mekanizmasını öğrendikten sonra nasıl soruyu çözüceğimize bakalım. Soruda bizden istenen şey cache'i zehirleyip ana sayfada document.cookie diye bir pop-up çıkarmamız bizden bekleniyor.
+
+Konumuz host header saldırıları olduğu için host değerinin dönen cevap üzerinde olup olmadığını kontrol edelim.&#x20;
+
+<figure><img src="../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
+
+Dönen cevap üzerinde host değerini görebiliyoruz. Önceki örneklerde yaptığımız gibi host değerini manipüle ederek istediğimizi yapabilir miyiz diye denemeler yapalım.&#x20;
+
+<figure><img src="../.gitbook/assets/image (45).png" alt=""><figcaption></figcaption></figure>
+
+Host değerini değiştirdiğimizde hata aldık. Host header değerini eski haline getirip ikinci bir host değeri ekleyebilir ve rastgele bir değer girip isteği gönderelim.&#x20;
+
+<figure><img src="../.gitbook/assets/image (46).png" alt=""><figcaption></figcaption></figure>
+
+İkinci bir host değeri girdiğimizde sistemde beklenmedik durumlara yol açabildik ve host değeri üzerinden manipüle edebildik.
+
+İsteğimizi gönderirken kullandığımız host değeri alınıp direkt bir şekilde src parametresine verildiği için parametre içinden kaçmaya çalışabiliriz.&#x20;
+
+```
+Host: 0a93000003a4932681f4a2c200f600d0.h1-web-security-academy.net
+Host: deneme"</script><script>alert(document.cookie)</script>
+```
+
+Yukarıdaki host değeriyle parametrelerden kaçabiliriz.&#x20;
