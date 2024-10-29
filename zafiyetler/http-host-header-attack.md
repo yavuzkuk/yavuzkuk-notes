@@ -193,7 +193,34 @@ Yukarıdaki host değeriyle parametrelerden kaçabiliriz. İki defa isteği gön
 
 Bu örneğimizde iste host header değerini manipüle ederek ağ içi tarama yapacağız. Öncelikle daha önce olduğu gibi bir web sitemiz var ve herhangi bir giriş bilgisine sahip değiliz. Soruda bize 192.168.0.0/24 IP aralığında bulunan ağ içi bir admin paneli olduğunu söylüyor. Bu panele ulaşıp carlos kullanıcısını silmemiz bizden isteniyor.&#x20;
 
-Öncelikle soruda host header değerinin zafiyetli olduğunu kanıtlamamız gerekiyor. Sistemin Burp Suite içinde bulunan Collabaratora istek atmasını isteyeceğiz ve bu şekilde zafiyetin olup olmadığını anlayacağız.&#x20;
+Öncelikle soruda host header değerinin zafiyetli olduğunu kanıtlamamız gerekiyor. Web sitesinin Burp Suite içinde bulunan Collaborator ile zafiyeti kanıtlayacağız.&#x20;
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
+Öncelikle Burp Suite ile ana sayfaya oluşturulan bir isteği yarıda kesiyoruz ve host header değerini seçip sağ tıklayarak "Insert Collaborator payload" seçeneğine tıklıyoruz. Bu sayede host değerimizi değiştirmiş oluyoruz.&#x20;
+
+İsteği bu şekilde gönderiyoruz sonrasında üst kısımda bulunan Collaborator sekmesine tıklıyoruz. Poll now butonuna bastıktan sonra başarılı bir şekilde isteklerin atıldığını görüyoruz.
+
+<figure><img src="../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
+
+Repeater üzerinden gönderdiğimiz istek başarılı bir şekilde bize ulaştı. Demek oluyor ki host header değeri üzerinde gerekli kontroller yapılmamış ve hedef olarak gösterilen yerlere istek atıyor.
+
+Bizden istenen ise 192.168.0.0/24 aralığında bir admin paneli bulmak. Bunun için az önce repeater üzerinde düzenlediğimiz isteğin Intrudera göndermek ve host değerini değiştirmek.&#x20;
+
+<figure><img src="../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
+
+İsteği bu şekilde düzenliyoruz ve payload olarak 0-255 arasındaki sayıları ayarlıyoruz. Yapılan istekler sonucunda bir tane Ip adresi diğer adreslere göre farklı bir status code döndürüyor.&#x20;
+
+&#x20;
+
+<figure><img src="../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
+
+Ana sayfaya host değeri olarak 192.168.0.145 ile istek attığımızda bizi /admin dosyasına yönlendiriyor ve bize dönen cevap üzerinde aşşağı kısımlara indiğimizde bize kullanıcı silme ile ilgili bir form karşımıza çıkıyor.&#x20;
+
+<figure><img src="../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
+
+/admin/delete sayfasına csrf ve kullanıcı adını parametrelerini ekleyerek bir post isteği gönderelim ve soruyu çözelim.
+
+Post isteğini düzenleyip carlos kullanıcısını siliyoruz ve soruyu çözmüş oluyoruz. &#x20;
+
+<figure><img src="../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
