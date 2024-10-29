@@ -35,7 +35,7 @@ Bu labda bizden istenen şey JWT üzerinde değişiklik yaparak admin panele eri
 
 Geliştirici konsolundan sistem tarafından bize atanan JWT değerini görüyoruz. [JWT-Decoder](https://fusionauth.io/dev-tools/jwt-decoder) sitesinden JWT hakkında bilgi alabiliyoruz. Yanlış yapılandırılan bazı sistemler elde ettiği JWT tokenlarında imza kontrolü yapmıyor.
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Girmiş olduğumuz kullanıcı adı payload kısmında sub olarak karşımıza çıkıyor. Bu kısmı `administrator` olarak değiştirip yeni oluşan JWT değerini eski JWT ile değiştiriyoruz. Sayfayı yenilediğimizde admin panele ulaşım carlos kullanıcısını silebiliyoruz.
 

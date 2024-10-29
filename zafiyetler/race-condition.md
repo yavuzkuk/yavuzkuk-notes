@@ -61,7 +61,7 @@ Sonrasında sepet kısmına gidip indirim kodu eklemek için bize tanımlana PRO
 
 Kodu yazıp hemen göndermiyoruz. Bu esnada Burp Proxy özelliğini açıyoruz sonrasında kodu uygula tuşuna basıyoruz. Kodun uygulandığı esnadaki giden paket bize lazım. Bu paketi alıp tekrar tekrar göndermemiz gerekiyor.
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Kodu uygula butonuna bastığımızda arka tarafta böyle bir istek atılıyor. Biz bu isteği bir sürü defa göndermek istiyoruz o yüzden isteğe sağ tıklayıp Burp Repeatera göndermemiz gerekiyor. Bu arada yukarıda yakaladığımız isteği drop etmemiz gerekiyor. Repeater'a gönderdiğimiz isteği birde fazla hale getirmemiz gerekiyor. Öncelikle yapıcağımız istekleri gruplamamız lazım.&#x20;
 

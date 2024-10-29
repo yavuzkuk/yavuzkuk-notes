@@ -30,7 +30,7 @@ john --wordlist=rockyou.txt hash1.txt
 
 Bu komutu yazdıktan sonra aracımız bize algoritma tipi hakkında bilgi verir.&#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Aracımız bize hash algoritması hakkında bilgi verdi ve bu bilgiler eşliğinde işlemlerimizi yapabiliriz. Kullanılan hash tipini format parametresiyle belirtmemiz gerekiyor, hash algoritmalarının bazı özel isimleri olabiliyor bu formatları listelemek için şu komutu kullanabiliriz.&#x20;
 

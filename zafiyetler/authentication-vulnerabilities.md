@@ -108,7 +108,7 @@ Sisteme giriş yapmak için iki farklı giriş bilgisi verilmiş biri kendi hesa
 
 1 numaralı istek sisteme giriş yaparken  göndermiş olduğumuz istektir ve dikkat çeken ekstra bir durum yok. 2 numaralı isteğe baktığımızda login2 sayfasını yani 2FA kodunu girme sayfasını bize getiriyor. Hangi kullanıcı için kod oluşturulacağı da verify cookie değeriyle aktarılıyor. Eğer 2.adımda duran isteği göndermezsek sistem wiener kullanıcısı için 2FA kodu oluşturamaz. Eğer 2.adımda duran istekte bulunan verify değerini carlos yaparsak, carlos kullanıcısı için 2FA kodu oluşturur. Tabii ki de carlos kullanıcısını kullandığı email hesabına erişimimiz yok. Bu yüzden 2FA kod girme esnasında oluşan paketi yakalayıp Intruder ile brute force atağı gerçekleştireceğiz.
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 1 numaralı istekte gönderilen kodu görebiliyorsunuz bunu Intrudera gönderip üstünde çeşitli değiştirmeler yapıyoruz. Parametre olarak gönderilen mfa-code değerlerine Payloads sekmesi altından 0000 - 9999 arası değerler ekliyoruz ve saldırıyı başlatıyoruz.
 

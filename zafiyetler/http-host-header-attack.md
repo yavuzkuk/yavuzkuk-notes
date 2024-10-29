@@ -92,11 +92,11 @@ Bir saldırgan olarak tabii ki de hedefimizde olan kişinin şifresini bilmiyoru
 
 Konumuz host header saldırısı olduğu için şifre sıfırlama ekranında host header değerini değiştirip nasıl sistemi kendimize uygun şekilde kullanabiliriz bunu düşünmemiz gerekiyor. Öncelikle şifremi unuttum kısmına kendi kullanıcı adımızı girip arka tarafta nasıl bir istek gönderiliyor inceleyelim.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 Şifre değiştirme işlemi yaparken arka tarafta yukarıdaki gibi bir istek gönderiliyor. Bu istek wiener kullanıcısının mail adresine şifre sıfırlama maili gönderilmesini sağlar.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Mailde bulunan linke tıklayınca parametre olarak oluşturulmuş token değerini kontrol ederek şifre sıfırlama işlemi gerçekleşir. Şifre sıfırlama ekranına carlos yazdığımızda da carlos kullanıcısının mailine böyle bir mail gönderiliyor. Bizim burada yapmamız gereken carlos kullanıcısının token değerini ele geçirip şifresini sıfırlamak.&#x20;
 
@@ -188,4 +188,12 @@ Host: deneme"></script><script>alert(document.cookie)</script>
 ```
 
 Yukarıdaki host değeriyle parametrelerden kaçabiliriz. İki defa isteği gönderdikten sonra ana sayfa cache olarak saklanır. Buradan sonra tarayıcıdan sayfaya yenilediğimizde soruyu çözmüş oluyoruz.
+
+## Lab: Routing-based SSRF
+
+Bu örneğimizde iste host header değerini manipüle ederek ağ içi tarama yapacağız. Öncelikle daha önce olduğu gibi bir web sitemiz var ve herhangi bir giriş bilgisine sahip değiliz. Soruda bize 192.168.0.0/24 IP aralığında bulunan ağ içi bir admin paneli olduğunu söylüyor. Bu panele ulaşıp carlos kullanıcısını silmemiz bizden isteniyor.&#x20;
+
+Öncelikle soruda host header değerinin zafiyetli olduğunu kanıtlamamız gerekiyor. Sistemin Burp Suite içinde bulunan Collabaratora istek atmasını isteyeceğiz ve bu şekilde zafiyetin olup olmadığını anlayacağız.&#x20;
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
