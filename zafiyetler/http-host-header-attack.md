@@ -66,6 +66,21 @@ Host header değeri dışında kullanılabilecek bazı header'lar şunlardır:
 * X-HTTP-Host-Override
 * Forwarded
 
+
+
+* Bazı sistemlerde ise full link vermek sistemin çalışma yapısını değiştirebilir.
+
+```
+# Normal istek
+GET / HTTP/1.1
+Host: https://.........com.tr
+.......
+
+# Değiştirilmiş istek
+GET https://.........com.tr HTTP/1.1
+........
+```
+
 ### Host header saldırısın zararları nelerdir?
 
 * Password reset poisoning (Şifre değiştirme saldırısı)
