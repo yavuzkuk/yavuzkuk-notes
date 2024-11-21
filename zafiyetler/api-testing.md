@@ -71,7 +71,7 @@ Az önce de belirttiğim gibi herkese açık olmayan API dokümanları ulaşıla
 
 Bu yüzden endpointleri keşfetmek için API ile ilgili olan dizinleri bulmaya deneyelim. Var olan url adresinin sonuna `/api` eklediğimde dokümana ulaşıyorum.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 3 tane farklı endpoint gözüküyor. Bizden istenen şey carlos kullanıcısını silmek olduğu için 2. endpoint bizim işimize yarayacaktır. Silme işlemini yapmadan önce 1. isteğe bakalım, bir GET isteği göndererek belirli bir kullanıcı hakkında bilgi edinebiliyoruz.&#x20;
 
@@ -84,17 +84,17 @@ Tarayıcımızda yukarıdaki linke gittiğimizde carlos kullanıcısının detay
 
 &#x20;
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 Anladık ki API ile işlem yapmak için sisteme giriş yapmış olmamız lazım. Giriş yaptıktan sonra DELETE metodu ile birlikte `/api/user/carlos` router değerine istek göndermemiz gerekiyor. API ortamlarını test etmek için Postman vb. yazılımlar kullanılır. Bu konu için daha basit olması için Burp Suite ile araya girip gönderilen istek üzerinde çeşitli düzeltmeler yapıp isteğimiz istek haline getireceğiz.
 
 Öncelikle Intercept'i aktif hale getirip gönderilen isteği yakalamamız gerekiyor.
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 Adres çubuğuna [https://LAB-ID.web-security-academy.net/api/user/carlos](https://0ae200bb04be50a4801e9ef6008c004a.web-security-academy.net/api/user/carlos) adresini yazıp entera bastığımızde üstteki istek gönderiliyor. İşaretli olarak gözüktüğü üzere bu bir GET isteği. Bu istek bize carlos kullanıcısı hakkında bilgi getirecektir. Bu metodu DELETE ile değiştirerek isteği gönderiyoruz ve DETELE metoduna sahip router ile iletişime geçiyoruz ve carlos kullanıcısını silmiş oluyoruz.
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -108,7 +108,7 @@ Sistemde kullanılan API ve routerları bulmak için öncelikle diğer örnekte 
 
 Zaten soruda da bize gizli API endpointlerini bulup işlemi yapmamız istendiği yazıyor. Gizli API endpointi bulmak için bu süreçte Intercept açık bir şekilde işlemlere devam ediyorum. Bizden istenen ürünün detay sayfasına ulaşırken gönderilen paketler arasından dikkatimi çeken bir istek bulunuyor.
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 Bu istekte bir endpointe GET metodu ile bir istekte bulunulmuş. Ürünler arasından büyük ihtimalle id değeri 1 olan ürünün fiyatı istenilmiş. Bu isteği repeatera gönderip istek üzerinde çeşitli denemeler yapabiliriz.
 
@@ -180,3 +180,18 @@ Aynı endpoint bize GET isteği çeşitli gizli parametreleri açığa çıkarma
 
 Yukarıdaki GET isteğiyle birlikte bizim bilmediğimiz parametreleri ortaya çıkarmış olduk. Eğer PATH metoduna isAdmin değeri ekleyip çeşitli farklı değerler ile deneme yanılma yöntemiyle parametrenin nasıl etkilediğini bulabiliriz.
 
+## [Lab: Exploiting a mass assignment vulnerability](https://portswigger.net/web-security/api-testing/lab-exploiting-mass-assignment-vulnerability)
+
+Bu örneğimizde diğer örnekte olduğu gibi var olmayan paramız ile pahalı bir ürünü almaya çalışacağız. Öncelikle API endpointleri bulmamız gerekiyor. Intercept açıkken bütün işlemleri gerçekleştiriyoruz. Sisteme wiener:peter ile giriş yaptık, deri ceketi sepetimize ekledik ve sepete gitmek istediğimizde arka tarafta API endpointine bir istek gönderiyoruz.
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+Gördüğümüz üzere  GET isteği gönderdiğimizde bize çeşitli JSON verileri dönüyor. Bu JSON veri üzerinde chosen\_discount değeri 0 olarak gözüküyor, bu uygulanacak olan indirimin yüzdesidir. GET metodu ile API endpointin alabileceği değerleri görmüş olduk. Şimdi sepeti onaylayalım ve gönderilen isteği tekrar kontrol edelim.&#x20;
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+Sepeti onayladığımızda arka tarafta POST metodu ile birlikte bu istek gönderiliyor. Az önce gördük ki chosen\_discount adında bir parametrenin olduğunu görmüştük. Bu parametreyi ayarlarıp indirim oranını 100 yapabiliriz ve ürünü bedavaya alabiliyor olacağız.
+
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+
+İndirim oranını 100 yaptıktan sonra başarıyla soruyu çözebiliyoruz.

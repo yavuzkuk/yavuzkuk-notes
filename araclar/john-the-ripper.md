@@ -30,7 +30,7 @@ john --wordlist=rockyou.txt hash1.txt
 
 Bu komutu yazdıktan sonra aracımız bize algoritma tipi hakkında bilgi verir.&#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Aracımız bize hash algoritması hakkında bilgi verdi ve bu bilgiler eşliğinde işlemlerimizi yapabiliriz. Kullanılan hash tipini format parametresiyle belirtmemiz gerekiyor, hash algoritmalarının bazı özel isimleri olabiliyor bu formatları listelemek için şu komutu kullanabiliriz.&#x20;
 
@@ -40,13 +40,13 @@ Aracımız hash algortiması olarak md5 olarak bize sonuç verdi, format olarak 
 
 `john --list=formats | grep MD5`
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 MD5 için format belirtirken Raw-MD5 şeklinde belirtmemiz gerekiyor. Aracı kullanırken ayrıca bir wordlist vermemiz gerekiyor. Bunun içinse --wordlist parametresini vermemiz gerekiyor. Wordlist olarak rockyou.txt dosyasını kullanacağım.&#x20;
 
 `john --wordlist=rockyou.txt --format=Raw-MD5 hash1.txt`
 
-<figure><img src="../.gitbook/assets/image (4) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 İlk hash değerimizin asıl orjinal değeri biscuit olduğunu anlamış olduk.
 
@@ -56,13 +56,13 @@ MD5 için format belirtirken Raw-MD5 şeklinde belirtmemiz gerekiyor. Aracı kul
 
 Web sitesi hash algoritması olarak SHA1 olarak sonuç verdi.
 
-<figure><img src="../.gitbook/assets/image (5) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 John the Ripper aracının SHA1 için kullandığı parametre şekli nedir öncelikle ona bakalım.
 
 `john --list=formats | grep SHA1`
 
-<figure><img src="../.gitbook/assets/image (6) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Format olarak Raw-SHA1 olarak belirteceğiz. Benzer şekilde komudumuzu yazdıktan sonra hashin değerini ulaşabiliyoruz.
 
