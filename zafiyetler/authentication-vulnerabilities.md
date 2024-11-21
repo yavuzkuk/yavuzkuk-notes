@@ -104,21 +104,21 @@ Bu sonuç gösteriyor ki `carlos:hockey` bilgileriyle sisteme giriş yapabiliriz
 
 Sisteme giriş yapmak için iki farklı giriş bilgisi verilmiş biri kendi hesabımız olan wiener:peter diğeri ise carlos kullanıcısı. carlos kullanıcısını şifresini bilmiyoruz. Öncelikle sistemi gözlemek için kendi bilgilerimizle sisteme giriş yapalım ve giden paketleri inceleyelim.&#x20;
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 1 numaralı istek sisteme giriş yaparken  göndermiş olduğumuz istektir ve dikkat çeken ekstra bir durum yok. 2 numaralı isteğe baktığımızda login2 sayfasını yani 2FA kodunu girme sayfasını bize getiriyor. Hangi kullanıcı için kod oluşturulacağı da verify cookie değeriyle aktarılıyor. Eğer 2.adımda duran isteği göndermezsek sistem wiener kullanıcısı için 2FA kodu oluşturamaz. Eğer 2.adımda duran istekte bulunan verify değerini carlos yaparsak, carlos kullanıcısı için 2FA kodu oluşturur. Tabii ki de carlos kullanıcısını kullandığı email hesabına erişimimiz yok. Bu yüzden 2FA kod girme esnasında oluşan paketi yakalayıp Intruder ile brute force atağı gerçekleştireceğiz.
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 1 numaralı istekte gönderilen kodu görebiliyorsunuz bunu Intrudera gönderip üstünde çeşitli değiştirmeler yapıyoruz. Parametre olarak gönderilen mfa-code değerlerine Payloads sekmesi altından 0000 - 9999 arası değerler ekliyoruz ve saldırıyı başlatıyoruz.
 
 Brute force işleminden sonra geri dönen cevaplara baktığımızda bir tane cevap hariç diğerleri 200 dönmüş, diğer cevap ise 302 dönmüş durumda.
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Görmüş oluyoruz ki carlos kullanıcısı için 2FA kodumuzu bulmuş oluyoruz. Bulduğumuz bu kodu kullanmak için tekrardan `wiener:peter` bilgileriyle giriş yapacağız. 2FA kodunu gönderdiğimiz sırada paketi duruyoruz ve paket üzerinde çeşitli düzenlemeler yapıyoruz.
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Yukarıdaki isteği gönderdiğimizde ve sayfayı yenilediğimizde soruyu çözmüş oluyoruz.
 

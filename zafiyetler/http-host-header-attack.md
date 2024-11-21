@@ -107,11 +107,11 @@ Bir saldırgan olarak tabii ki de hedefimizde olan kişinin şifresini bilmiyoru
 
 Konumuz host header saldırısı olduğu için şifre sıfırlama ekranında host header değerini değiştirip nasıl sistemi kendimize uygun şekilde kullanabiliriz bunu düşünmemiz gerekiyor. Öncelikle şifremi unuttum kısmına kendi kullanıcı adımızı girip arka tarafta nasıl bir istek gönderiliyor inceleyelim.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Şifre değiştirme işlemi yaparken arka tarafta yukarıdaki gibi bir istek gönderiliyor. Bu istek wiener kullanıcısının mail adresine şifre sıfırlama maili gönderilmesini sağlar.
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Mailde bulunan linke tıklayınca parametre olarak oluşturulmuş token değerini kontrol ederek şifre sıfırlama işlemi gerçekleşir. Şifre sıfırlama ekranına carlos yazdığımızda da carlos kullanıcısının mailine böyle bir mail gönderiliyor. Bizim burada yapmamız gereken carlos kullanıcısının token değerini ele geçirip şifresini sıfırlamak.&#x20;
 
@@ -210,7 +210,7 @@ Bu örneğimizde iste host header değerini manipüle ederek ağ içi tarama yap
 
 Öncelikle soruda host header değerinin zafiyetli olduğunu kanıtlamamız gerekiyor. Web sitesinin Burp Suite içinde bulunan Collaborator ile zafiyeti kanıtlayacağız.&#x20;
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 Öncelikle Burp Suite ile ana sayfaya oluşturulan bir isteği yarıda kesiyoruz ve host header değerini seçip sağ tıklayarak "Insert Collaborator payload" seçeneğine tıklıyoruz. Bu sayede host değerimizi değiştirmiş oluyoruz.&#x20;
 
