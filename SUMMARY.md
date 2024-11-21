@@ -5,6 +5,7 @@
 
 ## 🚩 Zafiyetler
 
+* [API Testing](zafiyetler/api-testing.md)
 * [Authentication Vulnerabilities](zafiyetler/authentication-vulnerabilities.md)
 * [Command Injection](zafiyetler/command-injection.md)
 * [File Upload](zafiyetler/file-upload.md)
