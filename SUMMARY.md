@@ -27,6 +27,10 @@
 * [Zphisher](araclar/zphisher.md)
 * [Wpscan](araclar/wpscan.md)
 
+## 🚩 Network
+
+* [İnternet nedir?](network/internetNedir.md) 
+
 ## 🚩 Protokoller
 
 * [SMB (Server Message Block)](protokoller/smb-server-message-block.md)
