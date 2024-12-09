@@ -30,6 +30,7 @@
 ## 🚩 Network
 
 * [İnternet nedir?](network/internetNedir.md) 
+* [Firewall nedir?](network/firewall.md)
 
 ## 🚩 Protokoller
 
