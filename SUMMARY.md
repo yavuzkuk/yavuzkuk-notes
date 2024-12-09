@@ -27,7 +27,7 @@
 * [Zphisher](araclar/zphisher.md)
 * [Wpscan](araclar/wpscan.md)
 
-## 🖧 Network
+## 🚩 Network
 
 * [İnternet nedir?](network/internetNedir.md) 
 * [Firewall nedir?](network/firewall.md)
