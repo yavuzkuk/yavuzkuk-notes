@@ -30,6 +30,7 @@
 ## 🚩 Network
 
 * [İnternet nedir?](network/internetNedir.md) 
+* [IPv 4/6?](network/ip46.md) 
 * [Firewall nedir?](network/firewall.md)
 
 ## 🚩 Protokoller
