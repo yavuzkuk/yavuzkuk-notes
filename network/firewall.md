@@ -49,3 +49,5 @@ Bu cihazlar, bir güvenlik duvarından çok daha fazlasını sunarak saldırı t
 ## Next-generation firewall (NGFW)
 
 Next-Generation Firewall (NGFW), modern ağ güvenliği tehditlerine karşı koruma sağlamak için geleneksel güvenlik duvarı işlevlerini gelişmiş güvenlik özellikleriyle birleştiren ileri teknoloji güvenlik cihazlarıdır. NGFW’ler, temel olarak geleneksel güvenlik duvarlarının sunduğu paket filtreleme, ağ adresi çevirisi (NAT), sanal özel ağ (VPN) desteği ve durumsal paket incelemenin ötesine geçerek gelişmiş tehdit önleme yetenekleri sunar.
+
+> Bu yazı [_Yavuz Kuk_](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.

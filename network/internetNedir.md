@@ -14,4 +14,6 @@ Bu ISP şirketleri bizim internete bağlanmamız için internet sağlarlar. Ülk
 
 Temel olarak internet üzerinden nasıl bağlantı kurulduğunu anlamış olduk bundan sonra internete bağlı cihazların birbirini nasıl tanıdıklarını ve bu iletişimin mümkün olabilmesi için her cihazın özgün bir kimliğe ihtiyacı var. 
 
-Bu özgün kimlik yapısına IPv4/IPv6 diyoruz. Bu konu hakkında bilgi edinmek için diğer yazıma bakabilirsiniz.
+Bu özgün kimlik yapısına [IPv4/IPv6](ip46.md) diyoruz. Bu konu hakkında bilgi edinmek için diğer yazıma bakabilirsiniz.
+
+> Bu yazı [_Yavuz Kuk_](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.
