@@ -1,6 +1,8 @@
 # Firewall nedir?
 
+<figure>
 <img src='../assets/network/firewall/firewall.jpg'>
+</figure>
 
 Firewall sistemleri sunucunuza gelen giden paketlerin geçmesine izin veren bir kale suru gibi düşünebilirsiniz. 
 
@@ -24,22 +26,30 @@ Firewalllar mimari yapısına göre temel olarak 5 tanedir.
 Gelen-giden paketlerin hedef IP, kaynak IP ve port numaralarına bakarak tanımlanan kurallara göre paketin engellenme durumunu kontrol eder.
 Bu güvenlik duvarları nispeten basit ve uygun maliyetli olsa da, paketlerin içeriklerini inceleyemedikleri için karmaşık saldırılara karşı daha az etkili oluyorlar.
 
+<figure>
 <img src='../assets/network/firewall/packetFiltering.png'></img>
+</figure>
 
 ## Stateful Firewall
 Ağ trafiğini analiz ederken bağlantıların durum bilgisini (state) takip edebilen bir güvenlik duvarıdır. Bu tür firewall, bir oturum sırasında gerçekleşen veri akışını izler ve state table denilen bir tabloya kaydeder bu bilgileri kullanarak paketlerin engellenme durumu hakkında bir çıkarım yapar. Ağ trafiğinin tüm bağlamını ve ilerleyişini izleyerek daha derinlemesine bir analiz sunar ve böylece ağ güvenliğini artırır.
 
+<figure>
 <img src='../assets/network/firewall/statefullFirewall.webp'>
+</figure>
 
 ## Proxy Firewall
 Proxy firewall, hedef sunucu ile istemci(client) arasında bir konumda bulunur. İstemci bir web sitesine istek atmak istediğinde öncelikle proxye istek atar. Gelen istek kural setlerine uygunluğuna göre kontrol edilir ve uygunsa kabul edilir. Proxy, client adına sunucuya bir istek gönderir ve dönen cevap üzerinde incelemeler yaparak zararlı yazılımları ve kötü niyetli trafiği engeller. Proxy firewall'ın kendine ait bir IP adresi vardır, bu yüzden dışarıdan gelene bir istek içeride bulunan sunucu ile iletişime geçmemiş olur.
 
+<figure>
 <img src='../assets/network/firewall/proxyFirewall.png'>
+</figure>
 
 ## Web application firewall (WAF)
 WAF dediğimiz yapı sunucunun önünde yer alarak gelen HTTP isteklerini inceler ve sistemi çeşitli zafiyetlere karşı korumaya çalışır. Bir web uygulamasının önüne bir WAF yerleştirerek, web uygulaması ile İnternet arasında bir kalkan oluşturulur. 
 
+<figure>
 <img src='../assets/network/firewall/waf.webp'>
+</figure>
 
 ## Unified threat management (UTM) firewall
 Farklı farklı cihazların ve yazılımların yapacağı işlemleri tek bir cihazda toplanmış haline UTM firewall diyoruz. UTM cihazları, ağ güvenliğini sağlamak için birden fazla güvenlik özelliğini tek bir platformda birleştiren ve işletmelere kapsamlı koruma sağlayan sistemlerdir. Virüs, spam, saldırılar gibi tehditlerle mücadele etmek ve iş sürekliliğini sağlamak için geliştirilmişlerdir.
