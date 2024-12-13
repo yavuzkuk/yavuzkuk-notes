@@ -3,8 +3,9 @@
 Günlük hayatımızda çokça kullandığımız internet kelimesinin anlamını terimsel olarak nasıl bir şeye benzediğini düşündünüz mü? İnternet üzerinden uygulamalar sayesinde mesajlaşıyoruz, videolar izliyoruz online oyunlar oynuyoruz.
 
 Başka cihazlarla olan bu iletişim nasıl gerçekleşiyor? 
-
+<figure>
 <image src="../assets/network/internetNedir/internet.webp"></image>
+</figure>
 
 İnternet, dünya genelinde milyarlarca cihazı birbirine bağlayan devasa bir ağdır. Bu bağlantılar kablolu ve kablosuz bağlantı olarak ikiye ayrılır. Kablosuz bağlantılar Wi-Fi ve hücresel ağlar üzerinden sağlanırken, kablolu bağlantılar fiber optik ve bakır kablolar kullanılarak yapılır. Her iki bağlantı türü de ISP'ler aracılığıyla internete erişim sağlar.
 
