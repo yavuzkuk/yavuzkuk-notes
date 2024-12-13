@@ -13,7 +13,9 @@ DHCP protokü sayesinde manuel olarak IP ataması yapmaya gerek kalmadan otomati
 
 ## IP atama süreci
 
+<figure>
 <img src='../assets/network/dhcp/dhcp.gif'>
+</figure>
 
 DHCP tarafından IP ataması gerçekleşirken şu süreçler gerçekleşir:
 
