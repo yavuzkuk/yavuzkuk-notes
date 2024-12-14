@@ -34,7 +34,7 @@
 * [DHCP nedir?](network/dhcp.md)
 * [Firewall nedir?](network/firewall.md)
 * [DNS nedir?](network/dns.md)
-
+* [OSI nedir?](network/OSImodel.md)
 ## 🚩 Protokoller
 
 * [SMB (Server Message Block)](protokoller/smb-server-message-block.md)
