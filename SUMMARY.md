@@ -36,6 +36,8 @@
 * [DNS nedir?](network/dns.md)
 * [OSI modeli nedir?](network/OSImodel.md)
 * [TCP/IP modeli nedir?](network/tcpIp.md)
+* [NAT nedir?](network/nat.md)
+
 ## 🚩 Protokoller
 
 * [SMB (Server Message Block)](protokoller/smb-server-message-block.md)
