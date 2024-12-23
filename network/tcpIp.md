@@ -26,3 +26,6 @@ Verilerin doğru adreslere yönlendirilmesinden sorumludur. IP bu katmanda kulla
 
 ## Network Access layer
 Fiziksel ağ bağlantısını sağlayan katmandır. Veri, kablo, kablosuz sinyaller veya fiber optik vb. fiziksel ortamlar üzerinden iletilir. MAC adresleri ve donanım seviyesinde protokoller bu katmanda çalışır.
+
+
+> Bu yazı [_Yavuz Kuk_](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.

@@ -790,3 +790,7 @@ Hedef sistemlerde yaptığımız bu manuel taramaları yazılmış çeşitli oto
 {% embed url="https://github.com/jondonas/linux-exploit-suggester-2" %}
 
 {% embed url="https://tryhackme.com/r/room/linuxprivesc" %}
+
+
+
+> Bu yazı [_Yavuz Kuk_](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.

@@ -80,4 +80,4 @@ Encapsulation ve Decapsulation, cihazlar arasında verinin hatasız, düzenli ve
 </figure>
 
 
-
+> Bu yazı [_Yavuz Kuk_](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.
