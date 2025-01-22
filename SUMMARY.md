@@ -14,6 +14,8 @@
 * [LFI (Local File Inclusion)](zafiyetler/lfi-local-file-inclusion.md)
 * [Race Condition](zafiyetler/race-condition.md)
 * [JWT Bypass](zafiyetler/jwt-bypass.md)
+* [Web Cache Poisoning](zafiyetler/web-cache-poisoning.md)
+* [SOP ve CORS](zafiyetler/sopCORS.md)
 
 ## 🚩 Araçlar
 
