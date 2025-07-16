@@ -34,6 +34,7 @@
 * [İnternet nedir?](network/internetNedir.md) 
 * [IPv 4/6 nedir?](network/ip46.md) 
 * [DHCP nedir?](network/dhcp.md)
+* [DNS Zone Transfer nedir?](network/dnsZoneTransferNedir.md)
 * [Firewall nedir?](network/firewall.md)
 * [DNS nedir?](network/dns.md)
 * [OSI modeli nedir?](network/OSImodel.md)
