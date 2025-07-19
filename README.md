@@ -19,9 +19,9 @@ layout:
 
 # Ben kimim?
 
-Merhabalar ben Yavuz Kuk. Karabük Üniversitesi Bilgisayar Mühendisliği son sınıf öğrencisiyim. Siber Güvenlik ve Flutter ile mobil uygulama geliştirme alanlarında kendi çapımda çalışmalar yapıyorum. Ayrıca T3 Deneyap Atölyelerinde Siber Güvenlik ve Mobil Uygulama geliştirme eğitmenliği yapmaktayım.
+Merhabalar ben Yavuz Kuk. Karabük Üniversitesi Bilgisayar Mühendisliği mezunuyum. Uygulama güvenliği ve Flutter ile mobil uygulama geliştirme alanlarında kendi çapımda çalışmalar yapıyorum.
 
-[Yavuz Kuk CV](https://drive.google.com/file/d/14MKbWq6DUGpSnj1wkaMvAAXH8Oe4Uh5M/view?usp=sharing)
+[Yavuz Kuk CV](https://drive.google.com/file/d/1uQbpCq-rdeAADCRcBzdoCOaea3wPRx0Q/view?usp=sharing)
 
 ### Sosyal Medya
 
