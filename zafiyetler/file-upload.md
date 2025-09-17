@@ -36,11 +36,11 @@ Normalde web sitelerinde bu tür bir sorunla karşı karşıya kalmamak için si
 
 Öncelikle sitemizde bir dosya yükleme ekranı var ve arka tarafta bir dağ fotoğrafı var.
 
-<figure><img src="../assets/fileUpload/fileUploadhtml.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/fileUpload/fileUploadhtml.png" alt=""><figcaption></figcaption></figure>
 
 Ve arkadaki dağ fotoğrafının ismi mountains.jpg yukarıda konumuzun var olan dosyaların üstüne fotoğraf ekleyip o dosyanın üzerine yazmak olduğunu bildiğimiz için kendi sistemimizde bulunan bir fotoğrafın ismini mountains.jpg haline getirip yüklemeyi deniyorum.
 
-<figure><img src="../assets/fileUpload/fileUpload1flag.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/fileUpload1flag.png" alt=""><figcaption></figcaption></figure>
 
 Ve cevaba ulaşıyorum. Normal sistemlerde bu tür dosya üzerine yazma işlemi olmaz. Yüklediğiniz dosyanın başına ya da sonuna rastgele bir karakter grubu oluşturulup eklenmesi yada o an ki saatin farklı fonksiyonlara göre hashlenmiş hali dosya ismine eklenir. Bu sayede her dosya isminin diğerinden benzersiz olması sağlanır.
 
@@ -54,7 +54,7 @@ Ayrıca bu yüklediğimiz dosyaların çalıştırılması için hangi dizinde s
 
 Öncelikle sisteme shell yükleyip çalıştıramaya çalışalım. Bunun için [**p0wny-shell**](https://github.com/flozz/p0wny-shell)'i kullanacağım indirdikten sonra sayfada bulunan yükleme alanında yüklemeye çalışıyorum.
 
-<figure><img src="../assets/fileUpload/fileUploadExec.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/fileUploadExec.png" alt=""><figcaption></figcaption></figure>
 
 Yükle dedikten sonra herhangi bir sıkıntı yaşamadan başarıyla php dosyamızı yüklüyoruz. Tamam ama bizim bu dosyaya ulaşıp kodlarımızı çalıştırmamız gerekiyor. Bunun için öncelikle yüklediğimiz içieriğin nerede depolandığını öğrenmemiz gerekiyor. Bunun için dizin taraması yapmamız gerekiyor. Gobuster aracı bu iş için kullanılabilir.&#x20;
 
@@ -64,15 +64,15 @@ Dosyaları bulabilmek için gobuster ile şu komutu yazmamız gerekiyor.
 gobuster -u http://shell.uploadvulns.thm -w common.txt -t 60
 ```
 
-<figure><img src="../assets/fileUpload/fileUploadgobuster1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/fileUploadgobuster1.png" alt=""><figcaption></figcaption></figure>
 
 Resources diye bir klasör bulunmakta yüklediğimiz içerikler burada depolanıyor olabilir. Url üzerinden bu klasöre erişmeye çalışalım.&#x20;
 
-<figure><img src="../assets/fileUpload/fileUploadResources.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/fileUploadResources.png" alt=""><figcaption></figcaption></figure>
 
 Yüklediğimiz shell.php dosyasını görebiliyoruz ve çalıştırabiliyoruz.
 
-<figure><img src="../assets/fileUpload/pownyshell.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/pownyshell.png" alt=""><figcaption></figcaption></figure>
 
 Yüklediğimiz p0wny@shell sayesinde artık sistem üzerinde kod çalıştırabiliyor durumdayız. Ve `/var/www` altında bulunan flag.txt dosyasında bulunan değeri elde etmiş oluyoruz. Bunun dışında reverse shell dediğimiz bir yöntemle de sistemin bize bağlanmasını sağlayabiliriz.&#x20;
 
@@ -82,7 +82,7 @@ Reverse shell  yöntemini kullanmak için [şu adresteki](https://github.com/pen
 
 Sonrasında indirdiğimiz dosyaların içinde bulunan php-reverse-shell.php dosyasında şu değişiklikleri yapıyoruz.&#x20;
 
-<figure><img src="../assets/fileUpload/fileUploadEdit.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/fileUploadEdit.png" alt=""><figcaption></figcaption></figure>
 
 Belirttiğim bu iki satırda hangi IP adresine ve hangi porta bağlanacağımız belirtiyoruz. THM odasına bağlandığımız IP adresini yazmamız gerekiyor.  Port adresine de istediğimiz bir port adresini eklemeliyiz.  Sonrasında  bu değişikliği yaptığımız php dosyasını sisteme yükleyebiliriz.&#x20;
 
@@ -90,7 +90,7 @@ Yükledikten sonra yukarıda verdiğimiz port üzerinden dinleme yapmalıyız. B
 
 Öncelikle üstünde değişiklikler yaptığımız reverse shell dosyasını sisteme yüklememiz gerekiyor. Dosyamızı yükledik ve resources klasörü altından ulaşabiliyoruz.&#x20;
 
-<figure><img src="../assets/fileUpload/resources.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/resources.png" alt=""><figcaption></figcaption></figure>
 
 Yüklemiş olduğumuz dosyaya tıklamadan önce kendi bilgisayarımızda netcat ile gelen isteği dinlememiz gerek. Daha önce belirttiğimiz port üzerinden şu komut ile dinlemeye başlayalım.
 
@@ -100,7 +100,7 @@ nc -lnp 1234
 
 Burada yazdığımız 1234 port numaramızı belirtiyor ve gelen istekleri dinliyoruz. Sonrasında yüklediğimiz dosyaya tıkladığımızda sistem terminal ekranımıza bağlanmış oluyor ve sistem üzerinde istediğimiz kodları çalıştırabiliyoruz.
 
-<figure><img src="../assets/fileUpload/netcatListen.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/netcatListen.png" alt=""><figcaption></figcaption></figure>
 
 ### Filtreleme sistemleri
 
@@ -116,27 +116,27 @@ Gönderdiğimiz dosyanın MIME type denilen bir dosya tipi vardır sistemler bu 
 
 Sitemizde JavaScript koduyla yüklenen dosyanın MIME type kontrolü sağlanıyor eğer geçerli bir durumdaysa yüklenmesine izin veriliyor eğer geçersizse hata veriyor. Öncelikle kaynak koda bakalım.
 
-<figure><img src="../assets/fileUpload/cilentJs.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/cilentJs.png" alt=""><figcaption></figcaption></figure>
 
 Kaynak koda baktığımızda bir JavaScript dosyası dikkatimizi çekiyor. İçeriğini incelediğimizde şöyle bir kod çıkıyor.
 
-<figure><img src="../assets/fileUpload/htmlJS.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/htmlJS.png" alt=""><figcaption></figcaption></figure>
 
 Bu kodun amacı yüklenen dosyanın MIME type kontrolünün yapılmasıdır. Yüklenen dosyanın MIME type değeri image/png ise sisteme yüklenmesine izin verilir. Eğer eşit değilse sistem hata verir.
 
 Bu JavaScript dosyasının sistemimize gelmemesi lazım ve bizi kısıtlamaması lazım. Gelen response üzerinde değişikler yapmamız lazım.&#x20;
 
-<figure><img src="../assets/fileUpload/burpsettings.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/burpsettings.png" alt=""><figcaption></figcaption></figure>
 
 Burp Suite ile araya girip yukarıda ki değişikliği yapıyoruz ve bu istek sonucunda dönen cevap üzerinde değişiklik yapabiliyoruz.
 
-<figure><img src="../assets/fileUpload/highJS.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/highJS.png" alt=""><figcaption></figcaption></figure>
 
 İşaretli kısmı siliyoruz ve böyle bir kontrole maruz kalmıyoruz. Bu kısımdan sonra sisteme istediğimiz shell dosyasını atabiliriz ve çalıştırabiliriz. Yükleme işleme başarıyla tamamlandı ama bizim bu dosyayı çalıştırmamız lazım ve yüklediğimiz dosyaların hangi dizine yüklendiğini bilmiyoruz. Daha önce yaptığımız gibi gobuster ile tarama yapıyoruz ve yüklediğimiz içeriklerin images klasöründe depolandığını görüyoruz.
 
 Yüklediğimiz içeriğe tıklayıp p0wny-shellin çalışmasını sağlıyoruz. Soruda bize /var/www altında bulunan flag.txt içeriği soruluyor. Elde ettiğimiz shell sayesinde sistem üzerinde kod çalıştırabiliyoruz.
 
-<figure><img src="../assets/fileUpload/pownyshell2.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/pownyshell2.png" alt=""><figcaption></figcaption></figure>
 
 ### Sunucu taraflı filtreleme
 
@@ -158,15 +158,15 @@ White list mantığı, Black listten farklıdır. Yine belirli dosya uzantılar�
 
 Örnek sistem üzerinden reverse-shell ile komut çalıştırıp /var/www/ altında bulunan flag.txt dosyasın ulaşmamız lazım.
 
-<figure><img src="../assets/fileUpload/private1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/private1.png" alt=""><figcaption></figcaption></figure>
 
 Normal bir jpg dosyası yükleyebiliyoruz. Ama bir php uzantılı bir dosya yüklemeye çalıştığımızda başarısız oluyoruz. Php dosyamızın uzantısını değiştirip tekrar deneyelim .php5 vb. denemeler yapalım.
 
-<figure><img src="../assets/fileUpload/burpsuiteshell.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/burpsuiteshell.png" alt=""><figcaption></figcaption></figure>
 
 Uzantıyı değiştirdikten sonra başarılı bir şekilde yükleme yapabiliyoruz. Yüklenen dosyanın nereye depolandığını bulmamız gerekiyor. Gobuster ile yapacağız.
 
-<figure><img src="../assets/fileUpload/privateGobuster.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/privateGobuster.png" alt=""><figcaption></figcaption></figure>
 
 Privacy klasörünün altında yüklediğimiz içerikler depolanıyor. Yüklemiş olduğumuz içeriğe tıklamadan önce netcat ile gelen istekleri dinlememiz gerekiyor.&#x20;
 
@@ -178,7 +178,7 @@ Yukarıdaki kod ile 1234 portundan gelen istekleri dinleyebiliyoruz. Sonrasında
 
 Dosyayı çalıştırdığımız an netcat ile shell alabiliyor ve komutları çalıştırabiliyoruz.
 
-<figure><img src="../assets/fileUpload/netcatUzantı.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/netcatUzantı.png" alt=""><figcaption></figcaption></figure>
 
 ### Magic Byte Bypass
 
@@ -191,15 +191,15 @@ file php-reverse-shell.php
 
 Gönderdiğimiz dosyanın jpg dosyası olarak algılanması için php dosyasının başına ```FF D8 FF EE``` baytlarını eklememiz gerekiyor. Öncelikle php dosyamızın başına AAAA gibi bir kısım ekliyoruz. 
 
-<figure><img src="../assets/fileUpload/magicbyte.png"><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/magicbyte.png"><figcaption></figcaption></figure>
 
 Php dosyamızın başına ekleme yaptıktan sonra hexeditor ile baktığımızda şöyle bir durum karşımıza çıkıyor. 
 
-<figure><img src="../assets/fileUpload/hexeditor.png"><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/hexeditor.png"><figcaption></figcaption></figure>
 
 [Şu adresten](https://en.wikipedia.org/wiki/List_of_file_signatures) dosyaların Magic Byte değerlerine ulaşabiliriz. Bu örneğimiz için `FF D8 FF EE` değerini kullanacağız. Yukarıda hexeditor üzerinden açtığımızda 41 değerlerinin yerine bu değerleri yazıyoruz.
 
-<figure><img src="../assets/fileUpload/hexeditor2.png"><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/hexeditor2.png"><figcaption></figcaption></figure>
 
 Bundan sonra Magic Byte kontrolü yapan sistemler dosyamızı artık php olarak değil bir JPEG dosyası olarak algılar.
 
@@ -211,25 +211,25 @@ Bu şekilde sistemlere farklı formatlarda dosyalar yükleyebiliriz.
 
 Bizim reverse shell alacağımız sistemde sadece GIF formatında dosyalara izin veriyor. 
 
-<figure><img src="../assets/fileUpload/onlyGIF.png"><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/onlyGIF.png"><figcaption></figcaption></figure>
 
 Şimdi gidip GIF dosya tipinin Magic Byte değerini öğrenip aynı şekilde eklememiz gerek.
 
 Geçen örneğimizde php dosyamızı JPG tipine çevirmiştik ve hexeditor üzerinden yapmıştık hexdeğerlerini eklemiştik. Şimdi daha kolay olması açısından hex değerlerini değil de ASCII değerlerini ekleyeceğiz. Bunun için nano ile dosyamızı açıyoruz.
 
-<figure><img src="../assets/fileUpload/gifbyte.png"><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/gifbyte.png"><figcaption></figcaption></figure>
 
 Nano ile dosyamızı açtıktan sonra `GIF87a` değerini başa ekleyeceğiz ve bu sayede .php uzantılı dosyamız GIF olarak algılanacak ve sisteme yükleyebileceğiz.
 
 Bu sayede artık yükleme yapabiliriz. Gobuster ile dosyaların nereye yüklendiği öğrenmemiz lazım sonrasında netcat ile gelen istekleri dinleyip dosyayı çalıştırmamız lazım.
 
-<figure><img src="../assets/fileUpload/magicbyteDirectory.png"><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/magicbyteDirectory.png"><figcaption></figcaption></figure>
 
 Bazı durumlarda yüklediğimiz içeriklerin nerede olduğunu bulabiliriz ama yüklenen dosyaları tıklayarak çalıştıramayız. Bunun için url üzerinden dosyayı seçmemiz gerekiyor. 
 
 URL üzerinden `http://magic.uploadvulns.thm/graphics/php-reverse-shell.php` sayfasına gitmemiz lazım ve dosyamızı çalıştırmammız lazım bu sayede dosyamız çalışmaya başlar ve netcat aracılığıyla shell alabiliyoruz. 
 
-<figure><img src="../assets/fileUpload/magicByteShell.png"></figure><figcaption></figcaption></figure>
+<figure><img src="../assets/zafiyetler/fileUpload/magicByteShell.png"></figure><figcaption></figcaption></figure>
 
 
 > Bu yazı [*Yavuz Kuk*](https://www.linkedin.com/in/yavuzkuk/) tarafından hazırlanmıştır.

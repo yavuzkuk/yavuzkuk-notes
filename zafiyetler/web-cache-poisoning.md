@@ -4,7 +4,7 @@
 
 Basit bir şekilde açıklamak gerekirse, Web Cache, web sunucumuza gelen aynı isteklerin depolandığı bir yapıdır. Bu sayede, tekrar eden istekler doğrudan Web Cache üzerinden yanıtlanır, böylece sunucunun yükü azalır ve performans artışı sağlanır.
 
-<figure><img src="../assets/webCachePoisoning/webCache.svg"></figure>
+<figure><img src="../assets/zafiyetler/webCachePoisoning/webCache.svg"></figure>
 
 Yukarıdaki örneğimize bakarsak ilk kullanıcı web sitesine bir istekte bulunuyor ve cevabını web sunucundan alıyor. Daha sonrasında web sitesine istek gönderildiğinde cevap web sunucusundan değil, web cacheden alır. Bu sayede web sunucusunun yükü azalmış olur.
 
@@ -71,29 +71,29 @@ Zafiyeti başarılı bir şekilde tespit ettikten sonra, bu zafiyeti tüm kullan
 
 Öncelikle labda bizden ekranda ``document.cookie`` değerini alert fonksiyonu ile ekrana basmamız isteniyor. Öncelikle Intercepti açıp isteğimizi yakalıyoruz ve Param Miner aracıyla unkey değerleri bulmasını sağlıyoruz.
 
-<figure><img src="../assets/webCachePoisoning/paramMiner.png"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/paramMiner.png"></figure>
 
 Bu işlem sonucunda cevap üzerinde etkisi olan değerleri bize gösteriyor.
 
-<figure><img src="../assets/webCachePoisoning/paramMinerResult.png"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/paramMinerResult.png"></figure>
 
 Hedef web sitesinde ``X-Forwarded-Host`` değeri farklılık yarattığını keşfettik. Şimdi tekrardan isteğimizi Intercept ile yakalayalım ve repatera gönderelim. İsteği gönderdiğimizde bize gelen cevabı incelediğimizde `X-Cache: hit` değerini görüyoruz.
 
-<figure><img src="../assets/webCachePoisoning/responseHit.jpg"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/responseHit.jpg"></figure>
 
 Bu sayede bize gelen cevabın sunucudan değil web cacheden geldiğini anlıyoruz.
 
 Daha önce bahsettiğim gibi temel URL üzerinde işlem yapıp yanlışlık yapmamak için cache buster değerini ekliyoruz ve Param miner ile bulduğumuz `X-Forwarded-Host` değerini ekliyorum ve isteği gönderiyorum.
 
-<figure><img src="../assets/webCachePoisoning/Xresponse.jpg"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/Xresponse.jpg"></figure>
 
 Dönen cevaba baktığımızda ``X-Forwarded-Host`` değeri karşımıza çıkıyor. Bizden istenen ise ``document.cookie`` değerini ekrana alert ile göstermekti. X-Forwarded-Host değerini değiştirerek önce src özelliğinden sonrasında script etiketinden çıkıp kendi script etiketlerimizi açabiliriz ve document.cookie değerini ekrana alert ile gösterebiliriz.
 
-<figure><img src="../assets/webCachePoisoning/scriptResponse.jpg"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/scriptResponse.jpg"></figure>
 
 Yukarıdaki payloadda öncelikle içinde olduğumuz src parametresinden kurtuluyoruz ve açılmış olan script etiketini kapatıyoruz bundan sonra da kendi script etiketlerimizi açıp document.cookie değerini ekrana yansıtan kodu yazıyoruz. Gelen cevaba bakarsanız X-Cache değeri hit yani bu cevap bize web cacheden geliyor. Eğer biz ``.......webacademy.net?a=s3`` adresini ziyaret edersek bizim karşımıza bir alert fonksiyonu çıkacaktır. Ama bizim burada istediğimiz şey temel URL üzerinde böyle bir alert fonksiyonu çıkması bunun içinde cache buster değerini siliyoruz ve isteklerimizi tekrar gönderiyoruz.
 
-<figure><img src="../assets/webCachePoisoning/xssFinal.jpg"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/xssFinal.jpg"></figure>
 
 Hedef web sitesini ziyaret ettiğimizde karşımıza bir pop-up çıkıyor ve soruyu çözmüş oluyoruz.
 
@@ -102,13 +102,13 @@ Hedef web sitesini ziyaret ettiğimizde karşımıza bir pop-up çıkıyor ve so
 
 Bu örnekte ise cookie değerlerinden ortaya çıkan bir durum söz konusu ve bizden ekrana pop-up içinde 1 değerini yansıtmamız isteniyor. Öncelikle Intercept ile isteği yakalayalım ve Repeatera gönderelim. Param Miner eklentisi ile tarama yapmadan önce istekte gönderilen cookie değerlerini kontrol etmek işimize yarayabilir.
 
-<figure><img src="../assets/webCachePoisoning/cookieShow.jpg"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/cookieShow.jpg"></figure>
 
 Cookie değerlerine baktığımızda ``fehost`` cookiesi cevap içinde yer almış halde duruyor. Öncelikle ``fehost`` değerimizi manipüle ederek data değişkeni içerisinden çıkarmaya çalışalım, sonrasında script etiketini kapatıp yeni bir script etiketi açıp içerisinde işlemlerimizi yapalım.
 
 Ama bu işlemlere başlamadan önce cache buster değerimizi ekleyelim ve işlemlere başlayalım.
 
-<figure><img src="../assets/webCachePoisoning/cookieFinal.jpg"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/cookieFinal.jpg"></figure>
 
 Cookie değerimizi manipüle ederek payloadımızı oluşturduk artık `web-security-academy.net?a=123a` web sitesini ziyaret ettiğimizde karşımıza pop-up çıkıyor. Bu zafiyetli kısmı temel URL'e ulaşmaya çalışan herkese yaymak istiyoruz bu yüzden cache buster değerini silip isteğimizi tekrarda gönderiyoruz ve isteğin `X-Cache` değerinin hit dönmesini sağlamaya çalışıyoruz. 
 
@@ -124,25 +124,25 @@ Cookie değerimizi manipüle ederek payloadımızı oluşturduk artık `web-secu
 
 Ana sayfa isteklerini Burp Suite ile durdurup yakalıyoruz. İsteği Repeater'a gönderiyoruz. İsteği tekrar gönderdikten sonra ``X-Cache:hit`` değerini görüyoruz. Denemek amacıyla bir cache buster değeri ekliyoruz ve gönderiyoruz.
 
-<figure><img src="../assets/webCachePoisoning/webCache2.jpg"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/webCache2.jpg"></figure>
 
 Bu örneğimizde parametre cache mekanizmasının key üretmesi konusunda yetkili bir durumda. Parametreyi değiştirdiğimizde key değeri değiştiği için başka bir cevapmış gibi düşünülüyor. Normalde Param Miner eklentisiyle birlikte header değerlerini tarayıp eklentinin bize verdiği değerlerden yola çıkardık ama bu örneğimizde unkeyed query parameter diyor. Param Miner ile unkeyed query parameterları taramamız gerekiyor.
 
-<figure><img src="../assets/webCachePoisoning/paramMinerQueryParam.png"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/paramMinerQueryParam.png"></figure>
 
 Tarama sonucunda `utm_content` adında bir parametreyi bize gösteriyor. Bu parametreyi ekleyip isteğimizi gönderelim ve sonucuna bakalım.
 
-<figure><img src="../assets/webCachePoisoning/webCache2Response.jpg"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/webCache2Response.jpg"></figure>
 
 `utm_content` parametresi cevabın içinde yer alıyor. Tek başına `utm_content` parametresi unkeyed mi kontrol etmek için diğer parametreyi silelim ve tekrardan isteği gönderelim.
 
 İsteği gönderdiğimizde ana safyanın cache hali bize dönüyor. Buradan anlıyoruz ki `utm_content` değeri cache buster bir parametre değil yani web cache tarafından dikkate alınan bir parametre değil. Soruyu çözmek için cache buster bir değer ekleyelim ve `utm_content` parametresini önce link etiketi içerisinden çıkaralım. Sonrasında script taglerini açıp alert(1) fonksiyonunu çalıştıralım.
 
-<figure><img src="../assets/webCachePoisoning/webCacheResponse3.jpg"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/webCacheResponse3.jpg"></figure>
 
 Bize gelen cevaba sağ tıklayıp `"Request in browser" > "In original session"` seçeneğine tıkladıktan sonra değeri kopyalayıp tarayıcıya ziyaret ettiğimizde ekrana alert(1) fonksiyonu çıktısı verecektir. Web sitesini zehirledik ama parametre değerini `/?a=6` yapan kullanıcılar için zehirlenme işlemi gerçekleşti. Zehirlenmeyi bütün kullanıcılara yaymak istiyoruz bunun için cache buster değerini silip cache miss olana kadar istek atmaya devam etmeliyiz. Age değeri 0 olduğunda kendi payloadımızı web cache tarafından cachelenmiş hale getirebiliriz ve soruyu çözebiliriz.
 
-<figure><img src="../assets/webCachePoisoning/webCache2Final.png"></figure>
+<figure><img src=""../assets/zafiyetler/webCachePoisoning/webCache2Final.png"></figure>
 
 
 
