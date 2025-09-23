@@ -64,7 +64,19 @@ Bir TLS sertifikası şu bilgileri içerir:
 <img src="../assets/network/ssl-tls/TLS-handshake-protocol.png">
 </figure>
 
+TLS esnasında işlemler gerçekleşirken verilerin şifrelenerek gönderilmesi lazım. Bu yüzden iki taraf arasında şifrelemek için ortak bir anahtar olması lazım.
 
+Bu anahtar güvensiz bir ortam olduğu için TLS/SSL işleminden önce gerçekleşemez. Bu yüzden TLS/SSL işleminde iki tarafında bileceği bir anahtar üretilerek. Şifreleme işleminde kullanılır.
+
+1. Öncelikle istemci, desteklediği TLS sürümlerini, cipher suite listesini, rastgele üretilmiş bir değer (ClientRandom) ve isteğe bağlı olarak SNI bilgisini gönderir.
+
+2. Sunucu, seçtiği TLS sürümünü, cipher’ı ve kendi rastgele değerini (ServerRandom) gönderir.
+
+3. Sunucu, istemciye CA tarafından imzalanmış sertifikasını ve public key’ini gönderir. Böylece sunucu, gerçekten iddia ettiği sunucu olduğunu kanıtlar.
+
+4. İstemci, sunucunun public key’i ile şifrelenmiş bir değer gönderir. Buna premaster secret denir. Bu değer sunucunun public key’i ile şifrelendiği için yalnızca sunucunun private key’i ile çözülebilir. Sunucu şifreli metni çözer ve premaster secret değerine erişir.
+
+5. İstemci ve sunucu, ClientRandom, ServerRandom ve Premaster Secret değerlerini kullanarak, şifreleme işlemleri sırasında kullanacakları session key’i türetmiş olurlar.
 
  web sayfası güvenli bir oturum başlatmak için gerekli olan açık anahtarı içeren SSL sertifikasını gönderir. Web tarayıcısı ile web sitesi arasındaki veri aktarımında kullanılan birincil protokol HTTPS’tir ve veri transferinin güvenliğini artırmak için şifrelenmiştir. Kullanıcılar, bankacılık hesaplarına giriş yaparken, e-posta hizmetlerini kullanırken veya sağlık sigortası sağlayıcılarına erişirken hassas bilgiler aktarırlar. HTTPS, web sitelerinin bilgilerinin ağda kolayca görüntülenmesini önler. Normal HTTP üzerinden bilgi gönderildiğinde, veri paketlere ayrılır ve bu paketler ücretsiz yazılımlar kullanılarak kolayca “sniff” edilebilir. HTTP üzerinden yapılan tüm iletişimler düz metin halinde gerçekleştiğinden, doğru araçlara sahip herkes bu bilgilere erişebilir. HTTPS ile trafik şifrelenir; dolayısıyla paketler yakalansa veya ele geçirilse bile içerik anlamlı bir şekilde görüntülenmez. HTTPS, port 443 üzerinden çalışır ve bu, HTTP’nin kullandığı port 80’den farklıdır. HTTPS, HTTP’den ayrı bir protokol değildir; HTTP’nin TLS/SSL şifrelemesi ile kullanılmasıdır.
 
@@ -72,3 +84,7 @@ Bir TLS sertifikası şu bilgileri içerir:
 Bir kullanıcı TLS kullanan bir web sitesine gittiğinde, kullanıcı cihazı ile web sunucusu arasında TLS el sıkışması başlar. Bu süreçte, taraflar hangi TLS sürümünü (TLS 1.0, 1.2, 1.3 vb.) ve hangi şifreleme algoritmalarını kullanacaklarını belirler, sunucunun kimliğini TLS sertifikasıyla doğrular ve el sıkışma tamamlandıktan sonra mesajları şifrelemek için oturum anahtarları oluşturur. RSA tabanlı bir el sıkışmada, istemci premaster secret’ı kendisi oluşturur, sunucunun açık anahtarıyla şifreler ve sunucuya gönderir.
 
 SSL el sıkışmaları artık TLS el sıkışmaları olarak adlandırılır; ancak “SSL” terimi hâlâ yaygın olarak kullanılmaktadır. TLS el sıkışması, TLS kullanan bir iletişim oturumunu başlatan süreçtir. El sıkışma sırasında iki taraf birbirini tanır, doğrular, kullanacakları kriptografik algoritmaları belirler ve oturum anahtarları üzerinde anlaşır. TLS el sıkışması, istemci ve sunucunun el sıkışmayı tamamlamak ve iletişimi sürdürebilmek için gerekli bilgileri değiş tokuş ettiği birden fazla adımdan oluşur. İstemci, desteklediği TLS sürümünü, şifreleme algoritmalarını ve “client random” olarak bilinen rastgele bir bayt dizisini içeren bir “client hello” mesajı gönderir. Sunucu, “server hello” mesajıyla SSL sertifikasını, seçilen şifreleme algoritmasını ve “server random” adlı rastgele bayt dizisini gönderir. İstemci, sunucunun SSL sertifikasını sertifikayı veren sertifika otoritesi ile doğrular. İstemci, “premaster secret” adlı bir rastgele bayt dizisini sunucuya gönderir. Premaster secret, sunucunun açık anahtarıyla şifrelenir ve yalnızca sunucu tarafından özel anahtarla çözülebilir. İstemci ve sunucu, client random, server random ve premaster secret’tan oturum anahtarlarını üretir ve aynı sonuçlara ulaşırlar. El sıkışma tamamlanır ve iletişim, oluşturulan oturum anahtarları kullanılarak güvenli bir şekilde devam eder. Tüm TLS el sıkışmalarında asimetrik kriptografi (açık ve özel anahtar) kullanılır, ancak tüm el sıkışmalarda oturum anahtarlarını oluştururken özel anahtar kullanılması gerekmez. Örneğin, ephemeral Diffie-Hellman el sıkışmasında istemci ve sunucu, premaster secret’ı bağımsız olarak hesaplamak için DH parametrelerini değiş tokuş eder. Oturum anahtarları, premaster secret, client random ve server random kullanılarak oluşturulur ve güvenli simetrik şifreleme sağlanır. Bu oturum anahtarları, TLS el sıkışmasından sonra tüm iletişimlerin şifrelenip çözülmesinde kullanılır.
+
+
+Kaynakça:
+- [Cloudfare](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/)
